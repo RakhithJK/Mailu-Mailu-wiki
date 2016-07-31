@@ -1,1 +1,9 @@
-Welcome to the freeposte.io wiki!
+# Users
+
+* [[Setup Guide]]
+* [[Maintenance Guide]]
+* [[Frequently Asked Questions]]
+
+# Developers
+
+* [[Contributors Guide]]
