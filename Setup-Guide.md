@@ -196,7 +196,7 @@ docker-compose up -d
 Then create the admin user:
 
 ```
-docker exec -i -t freeposte_admin_1 python manage.py admin admin exmaple.net admin
+docker exec -i -t freeposte_admin_1 python manage.py admin admin example.net admin
 ```
 
 This will create ``admin@example.net`` with password ``admin``. Connect to
