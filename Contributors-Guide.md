@@ -46,14 +46,6 @@ pull request feature. Maybe if the user base grows too much as well as the need
 for trust in a specific branch of the project, we can switch to a shared
 repository and add a couple of trusted committers.
 
-Forked projects
----------------
-
-If you find yourself forking the project for a specific independant purpose
-(commercial use, different phylosophy or incompatible point of view), please let
-us know so that we can list interesting known forks and their specific
-features (and backport some of them if your implementation is free as well).
-
 Commits
 -------
 
@@ -78,3 +70,12 @@ master directly if you find this appropriate. Still, keep in mind that:
   are using to implement a specific feature; to avoid any hassle, we suggest
   that you use branch names prefixed with ``feat-`` or ``fix-`` and followed
   either by the name of the Github issue or a short and meaningful name.
+
+Forked projects
+---------------
+
+If you find yourself forking the project for a specific independant purpose
+(commercial use, different phylosophy or incompatible point of view), we would
+be glad if you let us know so that we can list interesting known forks and
+their specific features (and backport some of them if your implementation
+is free as well).
