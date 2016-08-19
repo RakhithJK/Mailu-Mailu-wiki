@@ -143,20 +143,22 @@ on building Freeposte.io from source, simply remove the ``build:`` references:
 sed -i '/build:/d' docker-compose.yml
 ```
 
-The default configuration will pull the latest image built from the Docker
-Hub, which is based on the latest commit on GitHub. This behaviour is ok for
-evaluating Freeposte.io, but you should at least specify a branch. You will
-still get bugfixes and security updates, but breaking changed will not be
-pulled unless you explicitely change the branch number. To specify you want
-to pull the ``1.0`` branch, simply add the version number to the ``image``
-field:
+The default configuration will pull the latest stable image built from the Docker
+Hub, which is based on the latest stable commit on GitHub. This behaviour is ok for
+most setups. If you wish to specify a branch (avoid including breaking changes
+unintendidly for instance), you will still get bugfixes and security updates until
+the next stable release is replaced, but breaking changed will not be pulled unless
+you explicitely change the branch number. To specify you want to pull the ``1.0``
+branch, simply add the version number to the ``image`` field:
 
 ```
 VERSION=1.0
 sed -i "/image:/s/\(:[0-9.]*\)\?$/:$VERSION/" docker-compose.yml
 ```
 
-You should always have all containers using the same branch.
+If you wish to use the testing version, simply set the Docker tag at ``testing``
+instead of a branch number. You should always have all containers using the same
+branch (especially, never mix testing with any stable branch).
 
 Finally, edit the ``freeposte.env`` file and update the following settings:
 
