@@ -153,7 +153,7 @@ branch, simply add the version number to the ``image`` field:
 
 ```
 VERSION=1.0
-sed -i "/image:/s/\(:[0-9.]*\)\?$/:$VERSION/" docker-compose.yml
+sed -i "/image: freeposte/s/\(:[0-9.]*\)\?$/:$VERSION/" docker-compose.yml
 ```
 
 If you wish to use the testing version, simply set the Docker tag at ``testing``
