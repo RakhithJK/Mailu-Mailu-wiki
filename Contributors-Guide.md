@@ -1,6 +1,16 @@
 Development environment
 =======================
 
+The development environment is quite similar to the production one. Simply specify the ``:testing``
+tag on images that you do not build locally and build the others using ``docker-compose``:
+
+```
+docker-compose build
+```
+
+Web administration
+==================
+
 The administration Web interface requires a proper dev environment that can easily be setup using ``virtualenv`` (make sure you are using Python 3) :
 
 ```
