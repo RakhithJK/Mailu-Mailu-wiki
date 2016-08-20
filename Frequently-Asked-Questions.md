@@ -7,6 +7,6 @@ Example aliases include:
  - ``%master`` (will include ``postmaster``, ``hostmaster``, ``newsmaster``, etc.)
  - ``a_`` (any two-letters localpart starting with an a)
 
-# Can a mailbox forward to multiple destinations
+# Can a user mailbox forward to multiple destinations
 
 No, not for now. If you need a mailbox to forward to multiple destinations, either set an alias that redirects to these destinations and include a mailbox in the target emails, or setup an alias in the mailbox automatic forward. Issue #34 is open about this.
