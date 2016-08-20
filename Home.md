@@ -8,4 +8,5 @@
 
 * [[Contributors Guide]]
 * [[Development environment]]
+* [[Before creating a pull request]]
 * [[Architecture]]
