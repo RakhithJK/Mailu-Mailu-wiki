@@ -149,12 +149,7 @@ most setups. If you wish to specify a branch (avoid including breaking changes
 unintendidly for instance), you will still get bugfixes and security updates until
 the next stable release is replaced, but breaking changed will not be pulled unless
 you explicitely change the branch number. To specify you want to pull the ``1.0``
-branch, simply add the version number to the ``image`` field:
-
-```
-VERSION=1.0
-sed -i "/image: freeposte/s/\(:[0-9.]*\)\?$/:$VERSION/" docker-compose.yml
-```
+branch, simply add the version number to the ``image`` field.
 
 If you wish to use the testing version, simply set the Docker tag at ``testing``
 instead of a branch number. You should always have all containers using the same
