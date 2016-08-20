@@ -1,4 +1,4 @@
-# Users
+# Users (mail server administrators)
 
 * [[Setup Guide]]
 * [[Maintenance Guide]]
