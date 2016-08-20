@@ -7,4 +7,5 @@
 # Developers
 
 * [[Contributors Guide]]
+* [[Development environment]]
 * [[Architecture]]
