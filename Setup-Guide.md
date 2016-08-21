@@ -13,15 +13,12 @@ long-term professional support, you should probably turn to them instead.
 Setting up a system
 ===================
 
-You are free to choose any operating system that runs Docker (>= 1.11) and has
-the latest Docker Compose version installed. Some instructions are provided on
-the matter in the article [[Setup a base server]].
+Preparing the environment
+=========================
 
-Preparing the mail server environment
-=====================================
 
-Freeposte.io will store all of its persistent data in ``/freeposte`` by default,
-simply create the directory and move there:
+Freeposte.io will store all of its persistent data in a path of your choice
+(``/freeposte`` by default) simply create the directory and move there:
 
 ```
 mkdir /freeposte
@@ -31,39 +28,62 @@ cd /freeposte
 Docker Compose configuration is stored in a file named ``docker-compose.yml``.
 Additionally, Freeposte.io relies on an environment file for various settings.
 
-Download the templates files from the git repository:
+Download the latest template files from the git repository:
 
 ```
 wget https://raw.githubusercontent.com/kaiyou/freeposte.io/master/docker-compose.yml
-wget https://raw.githubusercontent.com/kaiyou/freeposte.io/master/freeposte.env
+wget https://raw.githubusercontent.com/kaiyou/freeposte.io/master/.env
 ```
 
-These templates are used for development environment. So, if you do not plan
-on building Freeposte.io from source, simply remove the ``build:`` references:
+Then open the ``.env`` file to setup the mail server.
 
-```
-sed -i '/build:/d' docker-compose.yml
-```
+Picking a version
+=================
 
-The default configuration will pull the latest stable image built from the Docker
-Hub, which is based on the latest stable commit on GitHub. This behaviour is ok for
-most setups. If you wish to specify a branch (avoid including breaking changes
-unintendidly for instance), you will still get bugfixes and security updates until
-the next stable release is replaced, but breaking changed will not be pulled unless
-you explicitely change the branch number. To specify you want to pull the ``1.0``
-branch, simply add the version number to the ``image`` field.
+Freeposte.io is shipped in multiple versions.
 
-If you wish to use the testing version, simply set the Docker tag at ``testing``
-instead of a branch number. You should always have all containers using the same
-branch (especially, never mix testing with any stable branch).
+- ``stable`` is the default version and features a stable server, it gets bugfixes
+  and patches but features are included every month or so after a couple weeks of
+  testing. This is the default setting and should match most requirements.
 
-Finally, edit the ``freeposte.env`` file and update the following settings:
+- ``1.0``, ``1.1``, and other version branches feature old versions of Freeposte.io,
+  they will not receive any more patches (except for the stable one) and you should
+  not remain forever on one of those branches; you could however setup the stable
+  branch by number to avoid introducing unexpected new feature until you read the
+  changelog properly. This is the most conservative option.
 
- - set ``DEBUG`` to ``False`` unless your are debugging,
- - set ``SECRET_KEY`` to a random 16 bytes string,
- - set ``DOMAIN`` to your main mail domain,
- - set ``ADMIN`` to the local part of the admin address on the main domain,
- - set ``HOSTNAME`` to your mailserver hostname.
+- ``testing`` and ``latest`` both point at the latest build from the master
+  development branch. It will most likely contain many more bugs, also you should
+  never use it for a production server. You are more than welcome to run a testing
+  server however and report bugs.
+
+Pick one of these versions and modify the ``VERSION`` configuration in the ``.env``
+file.
+
+Set the common configuration values
+===================================
+
+You *must* modify ``SECRET_KEY`` and set it to a randomly generated 16-bytes (16
+characters) value. Be very careful when generating the secret key. You should never
+disclose it to anyone either as it would compromise most of your mail server
+security.
+
+Modify ``DOMAIN`` to match your main email domain. This could be anyone of the
+domains that you plan on serving and will be used when building special (admin)
+email addresses and in some protocols that require a domain is explicitely
+exposed.
+
+Set ``ADMIN`` to the localpart of the admin address that you plan on creating
+on the main domain. For instance, if you main domain is ``domain.tld`` and your
+admin localpart is ``admin``, then administrative emails will be sent to
+``admin`domain.tld``. This address might also be exposed on some services
+(mailer daemon notifications, error pages, etc.) You can later create a mailbox
+or an alias for that address.
+
+Set ``HOSTNAME`` to match the public hostname of your mail server. This must
+be a fully qualified domain name. All your services (IMAP, SMTP, Web interface,
+etc.) will be available using that hostname. If you request a TLS certificate,
+it must match the hostname.
 
 Setting up certificates
 =======================
