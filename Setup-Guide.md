@@ -89,6 +89,29 @@ be a fully qualified domain name. All your services (IMAP, SMTP, Web interface,
 etc.) will be available using that hostname. If you request a TLS certificate,
 it must match the hostname.
 
+Enable optional features
+========================
+
+Some of Freeposte.io are not used by every user and are thus not enabled in a
+default configuration.
+
+A Webmail is a Web interface exposing an email client. Freeposte.io webmails are
+bound to the internal IMAP and SMTP server for users to access their mailbox through
+the Web. By exposing a complex application such as a Webmail, you should be aware of
+the security implications such an increase of attack surface. The ``WEBMAIL``
+configuration option must be one of the following:
+
+- ``none`` is the default value, no Webmail service will be exposed;
+- ``roundcube`` will run the popular Roundcube Webmail.
+
+If you plan on exposing a Webmail or if you would like to expose the administration
+interface on the public server address, you should set the ``FRONTEND`` configuration
+variable properly:
+
+- ``none`` is the default value, no Web interface will be exposed;
+- ``nginx`` will expose a nginx-based reverse proxy forwarding to ``/admin`` to the
+  administration interface and exposing a Webmail if any is configured.
+
 Install certificates
 =====================
 
