@@ -1,12 +1,15 @@
 Docker containers
 =================
 
-The development environment is quite similar to the production one. Simply specify the ``:testing``
-tag on images that you do not build locally and build the others using ``docker-compose``:
+The development environment is quite similar to the production one. You should always use
+the ``testing`` version when developping. Simply uncomment the ``build`` directive on
+containers that you are working on and run:
 
 ```
 docker-compose build
 ```
+
+whenever you want to re-build them.
 
 Web administration
 ==================
