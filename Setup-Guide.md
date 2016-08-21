@@ -10,12 +10,12 @@ Also, the idea behind Freeposte.io is based on the work by folks from Poste.io.
 If free software is not the reason you chose Freeposte.io or if you are seeking
 long-term professional support, you should probably turn to them instead.
 
-Setting up a system
-===================
+Prepare the environment
+=======================
 
-Preparing the environment
-=========================
-
+You are free to choose any operating system that runs Docker (>= 1.11) and has
+the latest Docker Compose version installed. Some instructions are provided on
+the matter in the article [[Setup a base server]].
 
 Freeposte.io will store all of its persistent data in a path of your choice
 (``/freeposte`` by default) simply create the directory and move there:
@@ -27,7 +27,6 @@ cd /freeposte
 
 Docker Compose configuration is stored in a file named ``docker-compose.yml``.
 Additionally, Freeposte.io relies on an environment file for various settings.
-
 Download the latest template files from the git repository:
 
 ```
@@ -37,8 +36,8 @@ wget https://raw.githubusercontent.com/kaiyou/freeposte.io/master/.env
 
 Then open the ``.env`` file to setup the mail server.
 
-Picking a version
-=================
+Pick a version
+==============
 
 Freeposte.io is shipped in multiple versions.
 
@@ -85,11 +84,11 @@ be a fully qualified domain name. All your services (IMAP, SMTP, Web interface,
 etc.) will be available using that hostname. If you request a TLS certificate,
 it must match the hostname.
 
-Setting up certificates
-=======================
+Install certificates
+=====================
 
 Freeposte.io relies heavily on TLS and must have a key pair and a certificate
-available, at least for the hostname configured in ``freeposte.env``.
+available, at least for the hostname configured in the ``.env`` file.
 
 Create the certificate directory:
 
@@ -102,31 +101,29 @@ Then create two files in this directory:
  - ``cert.pem`` contains the certificate,
  - ``key.pem`` contains the key pair.
 
-Creating the first admin user
-=============================
+Start Freeposte.io
+==================
 
-Freeposte.io does not come with any default user. You have to create the
-first admin user manually. First, start the mail server stack:
+Move the to the Freeposte.io directory and simply start the Docker Compose
+stack:
 
 ```
+cd /freeposte
 docker-compose up -d
 ```
 
-Then create the admin user:
+Freeposte.io does not come with any default user. You have to create the
+first admin user manually.
 
 ```
 docker exec -i -t freeposte_admin_1 python manage.py admin admin example.net admin
 ```
 
 This will create ``admin@example.net`` with password ``admin``. Connect to
-the Web admin interface change the password to a strong one:
+the Web admin interface change the password to a strong one.
 
-```
-https://your-host-name.tld/admin/
-```
-
-Testing before going live
-=========================
+Test before going live
+======================
 
 You should test all the critical features before using the mail server for
 actual messages. Try to send and receive e-mails, monitor the logs for some
