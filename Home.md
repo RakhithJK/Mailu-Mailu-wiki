@@ -1,6 +1,6 @@
 # Users (mail server administrators)
 
-* [[Setup Guide]] ([[Setup a base server]] prior to this)
+* [[Setup Guide]] ([[setup a base server]] prior to this)
 * [[Maintenance Guide]]
 * [[Frequently Asked Questions]]
 
