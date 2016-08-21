@@ -34,7 +34,8 @@ wget https://raw.githubusercontent.com/kaiyou/freeposte.io/master/docker-compose
 wget https://raw.githubusercontent.com/kaiyou/freeposte.io/master/.env
 ```
 
-Then open the ``.env`` file to setup the mail server.
+Then open the ``.env`` file to setup the mail server. Modify the ``ROOT`` setting
+to match your setup directory if different from ``/freeposte``.
 
 Pick a version
 ==============
