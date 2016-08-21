@@ -1,6 +1,3 @@
-Installing Freeposte.io
-=======================
-
 Things to consider
 ==================
 
@@ -12,6 +9,13 @@ every feature.
 Also, the idea behind Freeposte.io is based on the work by folks from Poste.io.
 If free software is not the reason you chose Freeposte.io or if you are seeking
 long-term professional support, you should probably turn to them instead.
+
+Setting up a system
+===================
+
+You are free to choose any operating system that runs Docker (>= 1.11) and has
+the latest Docker Compose version installed. Some instructions are provided on
+the matter in the article [[Setup a base server]].
 
 Preparing the mail server environment
 =====================================
