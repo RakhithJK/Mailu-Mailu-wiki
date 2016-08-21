@@ -1,5 +1,5 @@
-Picking a distribution
-======================
+Pick a distribution
+===================
 
 The mail server runs as a set of Docker containers. It is thus almost agnostic
 of the underlying operating system as long as a fairly recent Linux kernel is
@@ -12,8 +12,8 @@ any of the [officially supported distributions](https://docs.docker.com/engine/i
 For the purpose of this guide, all examples are based on Debian Stretch. The
 differences with other system will hardly be noticeable however.
 
-Setting up the distribution
-===========================
+Install the distribution
+========================
 
 First, install Debian Stretch from the *netinstall* CD image. When installing,
 make sure that you either:
@@ -56,8 +56,8 @@ systems) for managing persistent rules. If you were brave enough to switch to
 ``nftables``, you will have to rollback until official support is released
 by Docker or setup your own rulesets.
 
-Setting up Docker
-=================
+Install Docker
+==============
 
 Freeposte.io relies on some of the latest Docker features. Therefore, you should
 install Docker from the official repositories instead of your distribution
