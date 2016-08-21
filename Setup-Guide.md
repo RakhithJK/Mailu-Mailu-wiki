@@ -67,6 +67,11 @@ characters) value. Be very careful when generating the secret key. You should ne
 disclose it to anyone either as it would compromise most of your mail server
 security.
 
+Modify ``BIND_ADDRESS`` to match the public IP address assigned to your server.
+This address should be configured on one of the network interfaces of the server.
+If the address is not configured directly (NAT) on any of the network interfaces or if
+you would simply like the server to listen on all interfaces, use ``0.0.0.0``.
+
 Modify ``DOMAIN`` to match your main email domain. This could be anyone of the
 domains that you plan on serving and will be used when building special (admin)
 email addresses and in some protocols that require a domain is explicitely
