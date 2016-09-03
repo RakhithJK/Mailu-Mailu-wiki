@@ -133,23 +133,20 @@ Then create two files in this directory:
 Start Freeposte.io
 ==================
 
-Move the to the Freeposte.io directory and simply start the Docker Compose
+Before you start Freeposte.io, first create an admin user. Move the to the Freeposte.io directory and run:
+
+```
+docker-compose run admin python manage.py admin admin example.net admin
+```
+
+This will create ``admin@example.net`` with password ``admin``.  Then simply start the Docker Compose
 stack:
 
 ```
-cd /freeposte
 docker-compose up -d
 ```
 
-Freeposte.io does not come with any default user. You have to create the
-first admin user manually.
-
-```
-docker exec -i -t freeposte_admin_1 python manage.py admin admin example.net admin
-```
-
-This will create ``admin@example.net`` with password ``admin``. Connect to
-the Web admin interface change the password to a strong one.
+Connect to the Web admin interface and change the password to a strong one.
 
 Test before going live
 ======================
