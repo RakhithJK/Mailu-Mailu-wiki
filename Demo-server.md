@@ -13,6 +13,7 @@ Connecting to the server
  * Admin UI : https://test.freeposte.io/admin
  * Admin login : ``admin@test.freeposte.io``
  * Admin password : ``letmein``
+ * Docker UI : http://163.172.216.78:9000
 
 Adding domains
 ==============
@@ -20,10 +21,3 @@ Adding domains
 If you wish to add new domains to the server for test purposes, you could either direct the MX for one of you domains to ``test.freeposte.io``.
 
 Also, all subdomains of ``test.freeposte.io`` point to this server. Thus, you can simply add ``foo.test.freeposte.io`` and ``bar.test.freeposte.io`` for your tests.
-
-Debugging
-=========
-
-You can access the demo server internals and logs by browsing: http://test.freeposte.io:9000.
-
-Because HSTS is configured on the main Web interface, your browser might force-redirect to HTTPS. Simply switch browser or empty your HSTS cache before accessing the Docker debugging UI.
