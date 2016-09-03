@@ -11,7 +11,7 @@ Connecting to the server
  * IP address : ``163.172.216.78``
  * Webmail : https://test.freeposte.io
  * Admin UI : https://test.freeposte.io/admin
- * Admin login : ``admin@freeposte.io``
+ * Admin login : ``admin@test.freeposte.io``
  * Admin password : ``letmein``
 
 Adding domains
