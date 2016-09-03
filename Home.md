@@ -2,6 +2,7 @@
 
 * [[Setup Guide]] ([[setup a base server]] prior to this)
 * [[Maintenance Guide]]
+* [[Demo server]]
 * [[Frequently Asked Questions]]
 
 # Developers
