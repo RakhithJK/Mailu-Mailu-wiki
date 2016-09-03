@@ -52,7 +52,7 @@ Freeposte.io is shipped in multiple versions.
   branch by number to avoid introducing unexpected new feature until you read the
   changelog properly. This is the most conservative option.
 
-- ``testing`` and ``latest`` both point at the latest build from the master
+- ``latest`` points at the latest build from the master
   development branch. It will most likely contain many more bugs, also you should
   never use it for a production server. You are more than welcome to run a testing
   server however and report bugs.
