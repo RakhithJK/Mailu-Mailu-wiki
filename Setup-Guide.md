@@ -113,6 +113,13 @@ variable properly:
 - ``nginx`` will expose a nginx-based reverse proxy forwarding to ``/admin`` to the
   administration interface and exposing a Webmail if any is configured.
 
+Starting with version ``1.3``, the administration interface is not exposed on the
+public address by default, even
+with a frontend configured, you still need to set the ``EXPOSE_ADMIN`` variable:
+
+- ``yes`` will expose the admin interface in ``/admin``;
+- ``no`` (or any other value) will disable this behaviour.
+
 Install certificates
 =====================
 
