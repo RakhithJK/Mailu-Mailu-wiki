@@ -149,11 +149,10 @@ docker-compose up -d
 Before you start using Freeposte.io, you must create an admin user:
 
 ```
-docker-compose run --rm admin python manage.py admin admin example.net admin
+docker-compose run --rm admin python manage.py admin root example.net password
 ```
 
-
-Connect to the Web admin interface and change the password to a strong one.
+This will create a user named ``root@example.net`` with password ``password`` and administration privileges. Connect to the Web admin interface and change the password to a strong one.
 
 Test before going live
 ======================
