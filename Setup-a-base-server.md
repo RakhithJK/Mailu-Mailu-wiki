@@ -1,3 +1,10 @@
+Hardware considerations
+=======================
+
+You should make sure that your hardware (virtual or physical) is compatible with
+the latest Linux kernel. Also, you should have at least 1GB of total memory and
+512MB of free memory when running Freeposte.io.
+
 Pick a distribution
 ===================
 
