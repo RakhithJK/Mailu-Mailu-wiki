@@ -22,7 +22,7 @@ If you used ``_``, ``{% trans %}`` and other Babel syntaxes in your code, run th
 following command to update the POT file:
 
 ```
-pybabel extract -F babel.cfg -k lazy_gettext -o messages.pot .
+pybabel extract -F babel.cfg -k lazy_gettext -o messages.pot freeposte
 ```
 
 The, update the translations:
