@@ -3,8 +3,11 @@ Upgrading the mail server
 =========================
 
 First check upstream for changes in the ``docker-compose.yml`` or in the
-``freeposte.env`` files. Also, check ``CHANGELOG.md`` for changes that you
-might not want to include. Update the required configuration files, then
+``.env`` files. Also, check ``CHANGELOG.md`` for changes that you
+might not want to include.
+
+Update your ``.env`` file to reflect the version that you wish to install (if
+you are running ``stable`` or ``latest``, you may skip this and proceed), then
 simply pull the latest images and recreate the containers :
 
 ```
