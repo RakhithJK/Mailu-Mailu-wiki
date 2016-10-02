@@ -28,7 +28,7 @@ pybabel extract -F babel.cfg -k lazy_gettext -o messages.pot freeposte
 The, update the translations:
 
 ```
-pybabel update -i messages.pot -d translations
+pybabel update -i messages.pot -d freeposte/translations
 ```
 
 Please resolve fuzzy strings to the best of your knowledge.
