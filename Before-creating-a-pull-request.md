@@ -11,6 +11,28 @@ python manage.py db migrate
 This will generate a new script in ``migrations/versions`` that you must review
 before committing it.
 
+Update translations
+===================
+
+Freeposte.io uses Babel for internationalization and localization. Before any
+of your work is merged, you must make sure that your strings are internationalized
+using Babel.
+
+If you used ``_``, ``{% trans %}`` and other Babel syntaxes in your code, run the
+following command to update the POT file:
+
+```
+pybabel extract -F babel.cfg -k lazy_gettext -o messages.pot .
+```
+
+The, update the translations:
+
+```
+pybabel update -i messages.pot -d translations
+```
+
+Please resolve fuzzy strings to the best of your knowledge.
+
 Update information files
 ========================
 
