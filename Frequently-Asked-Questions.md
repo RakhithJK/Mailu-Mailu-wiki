@@ -10,3 +10,7 @@ Example aliases include:
 # Can a user mailbox forward to multiple destinations
 
 No, not for now. If you need a mailbox to forward to multiple destinations, either set an alias that redirects to these destinations and include a mailbox in the target emails, or setup an alias in the mailbox automatic forward. Issue #34 is open about this.
+
+# I am running CoreOS and Freeposte.io does not seem to work properly
+
+CoreOS does not come with the latest Docker API (written in october 2016), you can either select another operating system or upgrade to the ``alpha`` release that meets our requirements.
