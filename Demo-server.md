@@ -1,6 +1,6 @@
 The demo server is for demonstration and test purposes only. Please be respectful and keep the demo server functional for others to be able to try it out.
 
-The server is reset every day at 3am, french time. If you find the server is unusable, you can still ask for someone to reset it manually on Freenode, channel ``#freeposte.io``. Please do not open tickets everytime the server is down.
+The server is reset every day at 3am, french time. If you find the server is unusable, you can still ask for someone to reset it manually on Freenode, channel ``#mailu`. Please do not open tickets everytime the server is down.
 
 Keep in mind that the demo server is also used for some automated tests and runs the latest unstable version. If you find actual bugs when using the demo server, please report these!
 
