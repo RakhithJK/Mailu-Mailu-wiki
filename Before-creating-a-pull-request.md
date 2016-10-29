@@ -14,7 +14,7 @@ before committing it.
 Update translations
 ===================
 
-Freeposte.io uses Babel for internationalization and localization. Before any
+Mailu uses Babel for internationalization and localization. Before any
 of your work is merged, you must make sure that your strings are internationalized
 using Babel.
 
@@ -22,13 +22,13 @@ If you used ``_``, ``{% trans %}`` and other Babel syntaxes in your code, run th
 following command to update the POT file:
 
 ```
-pybabel extract -F babel.cfg -k lazy_gettext -o messages.pot freeposte
+pybabel extract -F babel.cfg -k lazy_gettext -o messages.pot mailu
 ```
 
 The, update the translations:
 
 ```
-pybabel update -i messages.pot -d freeposte/translations
+pybabel update -i messages.pot -d mailu/translations
 ```
 
 Please resolve fuzzy strings to the best of your knowledge.
