@@ -100,3 +100,33 @@ server {
 
 }
 ```
+
+Override Mailu configuration
+============================
+
+If you do not have the resources for running a separate reverse proxy, you could override Mailu reverse proxy configuration by using a Docker volume. Simply store your configuration file (Nginx format), in ``/mailu/nginx.conf`` for instance.
+
+Then modify your ``docker-compose.yml`` file and change the ``http`` section to add a mount:
+
+```
+  http:
+    build: $FRONTEND
+    image: mailu/$FRONTEND:$VERSION
+    restart: always
+    env_file: .env
+    ports:
+      - "$BIND_ADDRESS:80:80"
+      - "$BIND_ADDRESS:443:443"
+    volumes:
+      - "$ROOT/certs:/certs"
+      - "$ROOT/nginx.conf:/etc/nginx/nginx.conf"
+```
+
+You can use our [https://github.com/Mailu/Mailu/blob/master/nginx/nginx.conf](default configuration file) as a sane base for your configuration.
+
+Disable completely Mailu reverse proxy
+======================================
+
+You can simply disable Mailu reverse proxy by removing the ``http`` section from the ``docker-compose.yml`` and use your own means to reverse proxy requests to the proper containers.
+
+Be careful with this method as resolving container addresses outside the Docker Compose structure is a tricky task: there is no guaranty that addresses will remain after a restart and you are almost certain that addresses will change after every upgrade (and whenever containers are recreated).
