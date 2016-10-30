@@ -2,8 +2,8 @@ Hardware considerations
 =======================
 
 You should make sure that your hardware (virtual or physical) is compatible with
-the latest Linux kernel. Also, you should have at least 1GB of total memory and
-512MB of free memory when running Freeposte.io.
+the latest Linux kernel. Also, you should have at least 2GB of total memory and
+1GB of free memory when running Mailu.
 
 Pick a distribution
 ===================
@@ -13,7 +13,7 @@ of the underlying operating system as long as a fairly recent Linux kernel is
 running and the Docker API (>= 1.11) is available.
 
 Because most of our tests run on Debian Jessie and Debian Stretch, we recommend
-one of these for the base system. Freeposte.io should however be able to run on
+one of these for the base system. Mailu should however be able to run on
 any of the [officially supported distributions](https://docs.docker.com/engine/installation/).
 
 For the purpose of this guide, all examples are based on Debian Stretch. The
@@ -32,13 +32,13 @@ make sure that you either:
 
 If you chose to create a dedicated partition, simply mount it to
 ``/var/lib/docker``. You could also create a separate partition (*ext4* is a
-sane default)  ans mount it to ``/freeposte`` for storing e-mail data.
+sane default)  ans mount it to ``/mailu`` for storing e-mail data.
 
 Docker supports *AUFS* over *ext4* and *btrfs* as stable storage drivers.
 Other filesystems are supported such as *OverlayFS*. If you know what you are
 doing, you should go for it.
 
-Freeposte.io uses Docker port forwarding from the host to make services
+Mailu uses Docker port forwarding from the host to make services
 available to external users. First, your host should have a public IP address
 configured (see ``/etc/network/interfaces``) or your router should
 forward connections to its internal IP address. Due to spam problems and
@@ -48,7 +48,7 @@ and that you have a dedicated hostname with forward and reverse DNS entries
 for this IP address.
 
 Also, your host must not listen on ports ``25``, ``80``, ``110``, ``143``,
-``443``, ``465``, ``587``, ``993`` or ``995`` as these are used by Freeposte
+``443``, ``465``, ``587``, ``993`` or ``995`` as these are used by Mailu
 services. Therefore, you should disable or uninstall any program that is
 listening on these ports (or have them listen on a different port). For
 instance, on a default Debian install:
@@ -66,18 +66,18 @@ by Docker or setup your own rulesets.
 Install Docker
 ==============
 
-Freeposte.io relies on some of the latest Docker features. Therefore, you should
+Mailu relies on some of the latest Docker features. Therefore, you should
 install Docker from the official repositories instead of your distribution
 ones.
 
 The Docker website is full of [detailed instructions](https://docs.docker.com/engine/installation/)
 about setting up a proper Docker install. Default configuration should be
-suited for Freeposte.io.
+suited for Mailu.
 
 Additionally, you must install ``docker-compose`` by following the instructions
 from the [Docker website](https://docs.docker.com/compose/). Compose is a
 management tool for Docker, especially suited for multiple containers systems
-like Freeposte.io.
+like Mailu.
 
 Once everything is setup, you should be able to run the following commands
 (exact version numbers do not matter):
