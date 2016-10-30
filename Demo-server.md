@@ -7,17 +7,16 @@ Keep in mind that the demo server is also used for some automated tests and runs
 Connecting to the server
 ========================
 
- * Server name : ``test.freeposte.io``
+ * Server name : ``test.mailu.io``
  * IP address : ``163.172.216.78``
- * Webmail : https://test.freeposte.io
- * Admin UI : https://test.freeposte.io/admin
- * Admin login : ``admin@test.freeposte.io``
+ * Webmail : https://test.mailu.io/webmail
+ * Admin UI : https://test.mailu.io/admin
+ * Admin login : ``admin@test.mailu.io``
  * Admin password : ``letmein``
- * Docker UI : http://163.172.216.78:9000
 
 Adding domains
 ==============
 
 If you wish to add new domains to the server for test purposes, you could either direct the MX for one of you domains to ``test.freeposte.io``.
 
-Also, all subdomains of ``test.freeposte.io`` point to this server. Thus, you can simply add ``foo.test.freeposte.io`` and ``bar.test.freeposte.io`` for your tests.
+Also, all subdomains of ``test.mailu.io`` point to this server. Thus, you can simply add ``foo.test.mailu.io`` and ``bar.test.mailu.io`` for your tests.
