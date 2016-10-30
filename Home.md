@@ -4,6 +4,7 @@
 * [[Maintenance Guide]]
 * [[Demo server]]
 * [[Frequently Asked Questions]]
+* [[Use your own reverse proxy]]
 * [[Migrate from Freeposte to Mailu]]
 
 # Developers
