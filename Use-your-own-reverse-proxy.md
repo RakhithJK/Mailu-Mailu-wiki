@@ -49,11 +49,11 @@ server {
   # [...] here goes your standard configuration
 
   location /webmail {
-    proxy_pass https://localhost:8443;
+    proxy_pass https://localhost:8443/webmail;
   }
 
   location /admin {
-    proxy_pass https://localhost:8443;
+    proxy_pass https://localhost:8443/admin;
   }
 
   location /main_app {
@@ -85,7 +85,7 @@ server {
   # [...] here goes your standard configuration
 
   location /webmail {
-    proxy_pass https://localhost:8443;
+    proxy_pass https://localhost:8443/webmail;
   }
 }
 
@@ -95,7 +95,7 @@ server {
   # [...] here goes your standard configuration
 
   location /admin {
-    proxy_pass https://localhost:8443;
+    proxy_pass https://localhost:8443/admin;
   }
 
 }
