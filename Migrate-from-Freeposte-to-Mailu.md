@@ -53,3 +53,18 @@ Finally, you should be ready to start Mailu:
 ```
 docker-compose up -d
 ```
+
+About the tracker
+=================
+
+We are very strict on the no-tracking policy and make sure that none of the pieces we put together includes a tracker that could endanger our users privacy. So why include one in Freeposte after we renamed the project?
+
+The tracker is actually included in a notification bar displayed on top of the administration interface that tells administrators to move to Mailu. It is only included for users that upgraded their Freeposte installation (ran a ``docker-compose pull``) after the project was renamed. Thus it will only leak information from Freeposte administrators browsers during the short time between the upgrade and the migration. 
+
+And to the why: we needed a simple metric of how many users were still running and upgrading the old Freeposte distribution before we shut it down for good. On top of this, we do not store any other information than the fact that a hit was recorded on the tracker image, neither your IP address nor your user agent is stored and logs will be flushed after we shut down Freeposte.
+
+If you do not plan on migrating (which we strongly discourage!) any time soon, simply add the following line to your env file, which will disable the tracker once and for all:
+
+```
+DISABLE_MIGRATION_TRACKER=True
+```
