@@ -1,5 +1,12 @@
 Freeposte and Mailu actually are the same mail server distribution. In the process of renaming the project however, we introduced a few changes that may break your server if you do not pay enough attention. Here is a series of changes you should apply before you pull the Mailu images.
 
+Read the Changelog
+==================
+
+First supported Mailu release is ``1.3`` and has no counterpart on Freeposte.io. Thus, migrating will require that you upgrade to ``1.3`` (either by staying on the stable branch or by switching to ``1.3`` manually).
+
+Make sure that you read the changelog first!
+
 Stop Freeposte
 ==============
 
