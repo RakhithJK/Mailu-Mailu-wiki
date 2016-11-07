@@ -101,6 +101,15 @@ server {
 }
 ```
 
+Depending on how you access the front server, you might want to add a ``proxy_redirect`` directive to your ``location`` blocks:
+
+```
+proxy_redirect https://localhost https://your-domain.com;
+```
+
+This will stop redirects (301 and 302) sent by the Webmail, nginx front and admin interface from sending you to ``localhost``.
+
+
 Override Mailu configuration
 ============================
 
