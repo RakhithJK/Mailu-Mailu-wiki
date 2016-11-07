@@ -19,7 +19,8 @@ the latest Docker Compose version installed. Some instructions are provided on
 the matter in the article [[Setup a base server]].
 
 You should also have at least a DNS hostname and a DNS name for receiving
-emails. Some instructions are provided on the matter in the article [[DNS setup]].
+emails. Some instructions are provided on the matter in the article
+[[Setup your DNS]].
 
 Mailu will store all of its persistent data in a path of your choice
 (``/mailu`` by default) simply create the directory and move there:
