@@ -1,6 +1,6 @@
 E-mail has a decentralized architecture: pretty much every e-mail provider on the Internet has the ability to communicate with every other provider to deliver e-mails, much like post-office services from different cities or countries communicate to deliver standard mail.
 
-The analogy stops when it comes to discovery and responsibilities: in the e-mail model, there are most of the time two, maximum three actors in delivering a message: the emitter, an (optional) relay and the recipient server (some architectures are much more complex, but either they can be simplified for the purpose of this document or they are extremely rare). Forgetting about the relay, the emitter has to discover where the recipient server is located around the Internet, which is based on DNS.
+The analogy stops when it comes to discovery and responsibilities. In the e-mail model, there are most of the time two, maximum three actors in delivering a message: the emitter, an (optional) relay and the recipient server (some architectures are much more complex, but either they can be simplified for the purpose of this document or they are extremely rare). Forgetting about the relay, the emitter has to discover where the recipient server is located around the Internet, which is based on DNS.
 
 Setting up a DNS domain is (almost) mandatory to exchange e-mail on the Internet. Before you start using Mailu, you must have at least one domain setup to receive emails.
 
