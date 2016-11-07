@@ -19,3 +19,27 @@ mail.mydomain.com.  IN  A  a.b.c.d
 
 Also, ``a.b.c.d`` should be set in your ``BIND_INTERFACE`` configuration unless your server is in a DMZ and you are using port forwards to expose the services.
 
+Finally, make sure that you have a proper TLS certificate for you mail server hostname and install it according to the instructions in the [[Setup Guide]].
+
+MX entries
+==========
+
+Once your server is running and accessible at your mail server hostname, you can simply add new domains in the Web interface.
+
+For every domain that your mail server is responsible for, you must have a corresponding ``MX`` entry in the domain's DNS configuration. That entry is required for other mail servers to discover the hostname of the mail server responsible for receiving the messages, and then its IP address using the ``A`` record you setup earlier.
+
+To setup an ``MX`` record, exact actions will depend on your DNS provider and hoster, but assuming you are using a zone file, you should add for ``mydomain.com``:
+
+```
+mydomain.com.  IN  MX  10 mail.mydomain.com.
+```
+
+The number is the ``MX`` priority, which has little importance if you are running a single mail server but should be adjusted if you run a separate backup server.
+
+And for another domain, ``myotherdomain.com`` for example:
+
+```
+myotherdomain.com.  IN  MX  10 mail.mydomain.com.
+```
+
+Note that both point to the same mail server hostname, which is unique to your server.
