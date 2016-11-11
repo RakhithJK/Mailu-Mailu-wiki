@@ -32,7 +32,7 @@ A lot of responsibilities will be offered to the central container, like maintai
 
 * the ability to quickly revert to a previous configuration state
 * the ability to temporarily suspend configuration generation
-* regular cleanups of old configurations (maybe set a maximum age or maximum number of configuration sets)
+* regular cleanups of old configurations (maybe set a maximum age or maximum number of configuration sets, or simply use Git)
 
 Regarding the generation of new configuration versions, a timer should be set after each configuration change. A new version will be generated if configuration changes happen after the timer is out.
 
