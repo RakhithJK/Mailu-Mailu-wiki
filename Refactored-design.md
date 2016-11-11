@@ -26,6 +26,16 @@ The central container will acquire some privileged relationship to Docker and ru
 
 The admin interface will access the REST API and serve a client-side application based on HTML and JavaScript. A command line admin interface could also be built using the same library and primitives.
 
+# Configuration versionning
+
+A lot of responsibilities will be offered to the central container, like maintaining all configurations, including maybe the Docker Compose configuration itself. Thus, all configurations should be versionned, with three mechanisms:
+
+* the ability to quickly revert to a previous configuration state
+* the ability to temporarily suspend configuration generation
+* regular cleanups of old configurations (maybe set a maximum age or maximum number of configuration sets)
+
+Regarding the generation of new configuration versions, a timer should be set after each configuration change. A new version will be generated if configuration changes happen after the timer is out.
+
 # Service containers
 
 As opposed to the current model where all containers have very specific configuration, we could build really generic containers (even use some external ones) and generate configuration per-container.
