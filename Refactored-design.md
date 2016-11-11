@@ -26,3 +26,12 @@ The central container will acquire some privileged relationship to Docker and ru
 
 The admin interface will access the REST API and serve a client-side application based on HTML and JavaScript. A command line admin interface could also be built using the same library and primitives.
 
+# Service containers
+
+As opposed to the current model where all containers have very specific configuration, we could build really generic containers (even use some external ones) and generate configuration per-container.
+
+How the configuration is generated and/or shared is still to be determined. An interesting model would be to have a configuration repository containing template files, where Jinja (or any other template engine) builds configuration files upon relevant configuration changes (defining "relevant" might be the challenge).
+
+Then, built configuration directories could be mounted as volumes in the generic service containers.
+
+Overriding configuration is a must have and all templates should be extensible and/or include override files.
