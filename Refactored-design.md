@@ -12,6 +12,8 @@ It has become clear that we need a more self-contained central container that ex
 
 For now, the main required interface is an HTTP REST API. This API will be exposed for other containers to access data, but most of all for the Web administration interface to access its data.
 
+A client library will be packaged and exposed as a wheel package directly downloadable.
+
 ## All in one container?
 
 There is no plan to centralize all features in a single container. To the contrary, all current plans are going towards more generic and re-usable containers for Postfix, Dovecot and other services.
@@ -21,4 +23,6 @@ There is no plan to centralize all features in a single container. To the contra
 The central container will acquire some privileged relationship to Docker and running containers. It is unclear for now where the line will be drawn between reimplementing Docker-Compose features inside the central containers (sounds bad), using Docker Compose *as part of* the central container and keeping these details outside the central container.
 
 # Admin interface
+
+The admin interface will access the REST API and serve a client-side application based on HTML and JavaScript. A command line admin interface could also be built using the same library and primitives.
 
