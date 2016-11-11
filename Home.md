@@ -15,3 +15,4 @@
 * [[Before creating a pull request]]
 * [[Localization]]
 * [[Architecture]]
+* [[Refactored design]]
