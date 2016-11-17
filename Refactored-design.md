@@ -20,7 +20,9 @@ There is no plan to centralize all features in a single container. To the contra
 
 ## What relationship to Docker and Docker Compose?
 
-The central container will acquire some privileged relationship to Docker and running containers. It is unclear for now where the line will be drawn between reimplementing Docker-Compose features inside the central containers (sounds bad), using Docker Compose *as part of* the central container and keeping these details outside the central container.
+The central container exposes a public API. In the security model, it must not have any access to Docker. However, we need to be able to create, stop and restart containers, etc.
+
+A worker container will acquire some privileged relationship to Docker and running containers. It will create the API container if none is available, then connect to the API to get the current configuration and start related containers. Upon configuration changes, it will restart required containers that might reload their configuration on the fly.
 
 # Admin interface
 
@@ -40,8 +42,6 @@ Regarding the generation of new configuration versions, a timer should be set af
 
 As opposed to the current model where all containers have very specific configuration, we could build really generic containers (even use some external ones) and generate configuration per-container.
 
-How the configuration is generated and/or shared is still to be determined. An interesting model would be to have a configuration repository containing template files, where Jinja (or any other template engine) builds configuration files upon relevant configuration changes (defining "relevant" might be the challenge).
+Configuration will be generated using Jinja to allow for any configuration option to be used when configuring. It will be deployed over HTTP when containers start: the worker container will set a special entrypoint for every container with that purpose.
 
-Then, built configuration directories could be mounted as volumes in the generic service containers.
-
-Overriding configuration is a must have and all templates should be extensible and/or include override files.
+It will be possible to override any configuration file.
