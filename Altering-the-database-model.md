@@ -41,3 +41,14 @@ def upgrade():
     with op.batch_alter_table('user') as batch:
         batch.alter_column('spam_threshold', default=80.)
 ```
+
+Upgrade your local database
+===========================
+
+At that point, to start working on the changed database structure, you will need to upgrade your local database. Make a backup of your database, then:
+
+```
+python manage.py db upgrade
+```
+
+If any error arises, restore the backup, fix the migration script and try again.
