@@ -52,3 +52,13 @@ python manage.py db upgrade
 ```
 
 If any error arises, restore the backup, fix the migration script and try again.
+
+Actually work on your feature or fix
+====================================
+
+If your changes to the database are related to a view or template, you may not work on these to reflect the changes and access the proper columns/tables.
+
+Commit your work
+================
+
+You may finally commit your work as a whole: database changes and view/template changes. Do not forget to add the migration script.
