@@ -42,6 +42,8 @@ def upgrade():
         batch.alter_column('spam_threshold', default=80.)
 ```
 
+Remove unneeded Alembic comments and add a proper description to your migration script.
+
 Upgrade your local database
 ===========================
 
