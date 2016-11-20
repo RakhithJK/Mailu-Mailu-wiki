@@ -6,8 +6,8 @@ Make sure that your changes reflect on related classes as the migration should b
 
 Do not commit your changes at that stage.
 
-Generate migration scripts
-==========================
+Generate the migration script
+=============================
 
 After you modify the database models, you need to generate a new schema
 migration script:
