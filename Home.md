@@ -12,7 +12,7 @@
 
 * [[Contributors Guide]]
 * [[Development environment]]
-* [[Altering the database model]]
+* [[Altering the database schema]]
 * [[Before creating a pull request]]
 * [[Localization]]
 * [[Architecture]]
