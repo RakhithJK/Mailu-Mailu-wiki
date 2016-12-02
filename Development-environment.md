@@ -23,7 +23,7 @@ source bin/activate
 pip install -r requirements.txt
 ```
 
-You can then export the path to the development database:
+You can then export the path to the development database (use four slashes for absolute path):
 
 ```
 export SQLALCHEMY_DATABASE_URI=sqlite:///path/to/dev.db
