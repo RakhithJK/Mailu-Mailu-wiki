@@ -7,6 +7,7 @@
 * [[Setup your DNS]]
 * [[Use your own reverse proxy]]
 * [[Migrate from Freeposte to Mailu]]
+* [[Running on Kubernetes]]
 
 # Developers
 
