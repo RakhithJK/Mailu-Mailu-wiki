@@ -132,16 +132,23 @@ Install certificates
 Mailu relies heavily on TLS and must have a key pair and a certificate
 available, at least for the hostname configured in the ``.env`` file.
 
-Create the certificate directory:
-
-```
-mkdir /mailu/certs
-```
-
-Then create two files in this directory:
+Create the certificate directory containing
 
  - ``cert.pem`` contains the certificate,
  - ``key.pem`` contains the key pair.
+
+```
+# Example with self-signed certificate
+SSL_DOMAIN="mail.example.net"
+SSL_PATH="/mailu/certs"
+
+# create certificate directory
+mkdir -p $SSL_PATH
+
+# create key.pem and cert.pem
+openssl req -newkey rsa:2048 -x509 -keyout $SSL_PATH/key.pem -out $SSL_PATH/cert.pem -days 365 -nodes -subj "/C=NA/ST=None/
+L=None/O=None/CN=$SSL_DOMAIN"
+```
 
 Start Mailu
 ===========
