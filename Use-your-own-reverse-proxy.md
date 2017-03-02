@@ -131,7 +131,7 @@ Then modify your ``docker-compose.yml`` file and change the ``http`` section to 
       - "$ROOT/nginx.conf:/etc/nginx/nginx.conf"
 ```
 
-You can use our [default configuration file](https://github.com/Mailu/Mailu/blob/master/nginx/nginx.conf) as a sane base for your configuration.
+You can use our [default configuration file](https://github.com/Mailu/Mailu/blob/master/nginx/nginx.conf.default) as a sane base for your configuration.
 
 Disable completely Mailu reverse proxy
 ======================================
