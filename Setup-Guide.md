@@ -171,7 +171,13 @@ Test before going live
 ======================
 
 You should test all the critical features before using the mail server for
-actual messages. Try to send and receive e-mails, monitor the logs for some
-unexpected errors, etc.
+actual messages:
+
+- Try to send an email to an external service
+- On the external service, verify that DKIM and SPF are listed as passing
+- Try to receive an email from an external service
+- Check the logs (`docker logs -f containernamehere`) to look for warnings or errors
+- Use an open relay checker like [MailRadar](http://www.mailradar.com/openrelay/) to ensure you're not contributing to the spam problem on the internet. All tests there should result in "Relay denied"
+- If using DMARC, be sure to check the reports you get to verify that legitimate email is getting through and forgeries are being properly blocked
 
 Your server should now be running!
