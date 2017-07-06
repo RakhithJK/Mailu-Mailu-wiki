@@ -1,7 +1,7 @@
 The matter was discussed in an issue. Many thanks to @styxlab who did share this configuration : 
 
 ```yaml
-apiVerapiVersion: v1
+apiVersion: v1
 kind: Service
 metadata:
   name: redis
