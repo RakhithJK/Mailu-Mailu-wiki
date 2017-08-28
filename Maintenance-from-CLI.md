@@ -1,0 +1,73 @@
+Maintenance of users/aliases
+============================
+
+Managing users and aliases can be done from CLI using commands:
+
+* alias
+* alias_delete
+* user
+* user_import
+* user_delete
+* config_update
+
+alias
+-----
+
+```
+docker-compose run --rm admin python manage.py alias foo example.net "mail1@example.com,mail2@example.com"
+```
+
+alias_delete
+------------
+
+```
+docker-compose run --rm admin python manage.py alias_delete foo@example.net
+```
+
+user
+----
+
+```
+docker-compose run --rm admin python manage.py user --hash_scheme='SHA512-CRYPT' myuser example.net 'password123' 
+```
+
+user_import
+-----------
+primary difference with simple `user` command is that password is being imported as a hash - very useful when migrating users from other systems where only hash is known.
+
+```
+docker-compose run --rm admin python manage.py user --hash_scheme='SHA512-CRYPT' myuser example.net '$6$51ebe0cb9f1dab48effa2a0ad8660cb489b445936b9ffd812a0b8f46bca66dd549fea530ce' 
+```
+
+user_delete
+------------
+
+```
+docker-compose run --rm admin python manage.py user_delete foo@example.net
+```
+
+config_update
+-------------
+
+This command sole purpose is for importing users/aliases in bulk and synchronizing DB entries with external YAML template:
+
+```
+cat mail-config.yml | docker-compose run --rm admin python manage.py config_update --delete_objects
+```
+
+where mail-config.yml looks like:
+
+```
+---
+
+users:
+  - localpart: foo
+    domain: example.com
+    password_hash: klkjhumnzxcjkajahsdqweqqwr
+    hash_scheme: MD5-CRYPT
+
+aliases:
+  - localpart: alias1
+    domain: example.com
+    destination: "user1@example.com,user2@example.com"
+```
