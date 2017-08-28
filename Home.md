@@ -2,6 +2,7 @@
 
 * [[Setup Guide]] ([[setup a base server]] prior to this)
 * [[Maintenance Guide]]
+  * [[Maintenance from CLI]]
 * [[Demo server]]
 * [[Frequently Asked Questions]]
 * [[Setup your DNS]]
