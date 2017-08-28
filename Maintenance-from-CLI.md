@@ -71,3 +71,5 @@ aliases:
     domain: example.com
     destination: "user1@example.com,user2@example.com"
 ```
+
+without `--delete_object` option config_update will only add/update new values but will *not* remove any entries missing in provided YAML input.
