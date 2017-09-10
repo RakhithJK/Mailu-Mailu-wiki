@@ -8,7 +8,7 @@ Connecting to the server
 ========================
 
  * Server name : ``test.mailu.io``
- * IP address : ``163.172.216.78``
+ * IP address : ``51.15.169.20``
  * Webmail : https://test.mailu.io/webmail
  * Admin UI : https://test.mailu.io/admin
  * Admin login : ``admin@test.mailu.io``
@@ -17,6 +17,6 @@ Connecting to the server
 Adding domains
 ==============
 
-If you wish to add new domains to the server for test purposes, you could either direct the MX for one of you domains to ``test.freeposte.io``.
+If you wish to add new domains to the server for test purposes, you could either direct the MX for one of you domains to ``test.mailu.io`` or have your MX  point to the server's IP address.
 
 Also, all subdomains of ``test.mailu.io`` point to this server. Thus, you can simply add ``foo.test.mailu.io`` and ``bar.test.mailu.io`` for your tests.
