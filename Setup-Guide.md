@@ -92,10 +92,10 @@ domains that you plan on serving and will be used when building special (admin)
 email addresses and in some protocols that require a domain is explicitely
 exposed.
 
-Set ``ADMIN`` to the localpart of the admin address that you plan on creating
+Set ``POSTMASTER`` to the localpart of the admin address that you plan on creating
 on the main domain. For instance, if you main domain is ``domain.tld`` and your
 admin localpart is ``admin``, then administrative emails will be sent to
-``admin`domain.tld``. This address might also be exposed on some services
+``admin@domain.tld``. This address might also be exposed on some services
 (mailer daemon notifications, error pages, etc.) You can later create a mailbox
 or an alias for that address.
 
@@ -104,7 +104,8 @@ be a fully qualified domain name. All your services (IMAP, SMTP, Web interface,
 etc.) will be available using that hostname. If you request a TLS certificate,
 it must match the hostname.
 
-Set the `TLS_FLAVOR` in `.env` to one of the following values:
+Set the `TLS_FLAVOR` (starting with version 1.5) in `.env` to one of the following
+values:
 - `cert` is the default and requires certificates to be setup manually;
 - `letsencrypt` will use the Letsencrypt! CA to generate automatic ceriticates;
 - `notls` will disable TLS, this is not recommended except for testing.
