@@ -30,18 +30,6 @@ mkdir /mailu
 cd /mailu
 ```
 
-Docker Compose configuration is stored in a file named ``docker-compose.yml``.
-Additionally, Mailu relies on an environment file for various settings.
-Download the latest template files from the git repository:
-
-```
-wget -O docker-compose.yml https://raw.githubusercontent.com/Mailu/Mailu/master/docker-compose.yml.dist
-wget -O .env https://raw.githubusercontent.com/Mailu/Mailu/master/.env.dist
-```
-
-Then open the ``.env`` file to setup the mail server. Modify the ``ROOT`` setting
-to match your setup directory if different from ``/mailu``.
-
 Pick a version
 ==============
 
@@ -62,8 +50,29 @@ Mailu is shipped in multiple versions.
   never use it for a production server. You are more than welcome to run a testing
   server however and report bugs.
 
-Pick one of these versions and modify the ``VERSION`` configuration in the ``.env``
-file.
+Download the initial configuration file
+=====================================
+
+Docker Compose configuration is stored in a file named ``docker-compose.yml``.
+Additionally, Mailu relies on an environment file for various settings.
+Download the proper template files from the git repository. For `stable`:
+
+```
+wget -O docker-compose.yml https://raw.githubusercontent.com/Mailu/Mailu/stable/docker-compose.yml.dist
+wget -O .env https://raw.githubusercontent.com/Mailu/Mailu/stable/.env.dist
+```
+
+For the latest version (replace with version number otherwise):
+
+```
+wget -O docker-compose.yml https://raw.githubusercontent.com/Mailu/Mailu/master/docker-compose.yml.dist
+wget -O .env https://raw.githubusercontent.com/Mailu/Mailu/master/.env.dist
+```
+
+Then open the ``.env`` file to setup the mail server. Modify the ``ROOT`` setting
+to match your setup directory if different from ``/mailu``.
+
+Mdify the ``VERSION`` configuration in the ``.env`` file to reflect the version you picked..
 
 Set the common configuration values
 ===================================
@@ -95,6 +104,11 @@ be a fully qualified domain name. All your services (IMAP, SMTP, Web interface,
 etc.) will be available using that hostname. If you request a TLS certificate,
 it must match the hostname.
 
+Set the `TLS_FLAVOR` in `.env` to one of the following values:
+- `cert` is the default and requires certificates to be setup manually;
+- `letsencrypt` will use the Letsencrypt! CA to generate automatic ceriticates;
+- `notls` will disable TLS, this is not recommended except for testing.
+
 Enable optional features
 ========================
 
@@ -116,8 +130,8 @@ interface on the public server address, you should set the ``FRONTEND`` configur
 variable properly:
 
 - ``none`` is the default value, no Web interface will be exposed;
-- ``nginx`` will expose a nginx-based reverse proxy forwarding to ``/admin`` to the
-  administration interface and exposing a Webmail if any is configured.
+- ``traefik`` (new in 1.5) will expose Traefik as a reverse proxy;
+- ``nginx`` (deprecated in 1.5) will expose a nginx-based reverse proxy.
 
 Starting with version ``1.3``, the administration interface is not exposed on the
 public address by default, even
@@ -126,29 +140,17 @@ with a frontend configured, you still need to set the ``EXPOSE_ADMIN`` variable:
 - ``yes`` will expose the admin interface in ``/admin``;
 - ``no`` (or any other value) will disable this behaviour.
 
-Install certificates
+Finish setting up TLS
 =====================
 
 Mailu relies heavily on TLS and must have a key pair and a certificate
 available, at least for the hostname configured in the ``.env`` file.
 
-Create the certificate directory containing
-
+If you set `TLS_FLAVOR` to `cert` (starting with version 1.5) or if
+you did not enable *certbot*, then you must create a `certs` directory
+in your root path and setup a key-certificate pair there:
  - ``cert.pem`` contains the certificate,
  - ``key.pem`` contains the key pair.
-
-```
-# Example with self-signed certificate
-SSL_DOMAIN="mail.example.net"
-SSL_PATH="/mailu/certs"
-
-# create certificate directory
-mkdir -p $SSL_PATH
-
-# create key.pem and cert.pem
-openssl req -newkey rsa:2048 -x509 -keyout $SSL_PATH/key.pem -out $SSL_PATH/cert.pem -days 365 -nodes -subj "/C=NA/ST=None/
-L=None/O=None/CN=$SSL_DOMAIN"
-```
 
 Start Mailu
 ===========
