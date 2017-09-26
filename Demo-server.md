@@ -9,8 +9,8 @@ Connecting to the server
 
  * Server name : ``test.mailu.io``
  * IP address : ``51.15.169.20``
- * Webmail : https://test.mailu.io/webmail
- * Admin UI : https://test.mailu.io/admin
+ * Webmail : https://test.mailu.io/webmail/
+ * Admin UI : https://test.mailu.io/admin/
  * Admin login : ``admin@test.mailu.io``
  * Admin password : ``letmein``
 
