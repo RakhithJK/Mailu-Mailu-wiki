@@ -75,7 +75,7 @@ aliases:
 without `--delete_object` option config_update will only add/update new values but will *not* remove any entries missing in provided YAML input.
 
 Users
------
+~~~~~
 following are additional parameters that could be defined for users:
 
 * comment
@@ -93,7 +93,7 @@ following are additional parameters that could be defined for users:
 * spam_threshold
 
 Alias
------
+~~~~~
 
 additional fields:
 
