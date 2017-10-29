@@ -131,8 +131,7 @@ interface on the public server address, you should set the ``FRONTEND`` configur
 variable properly:
 
 - ``none`` is the default value, no Web interface will be exposed;
-- ``traefik`` (new in 1.5) will expose Traefik as a reverse proxy;
-- ``nginx`` (deprecated in 1.5) will expose a nginx-based reverse proxy.
+- ``nginx`` will expose a nginx-based reverse proxy.
 
 Starting with version ``1.3``, the administration interface is not exposed on the
 public address by default, even
