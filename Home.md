@@ -1,15 +1,10 @@
 # Users (mail server administrators)
 
-* [[Setup Guide]] ([[setup a base server]] prior to this)
-* [[Maintenance Guide]]
-  * [[Maintenance from CLI]]
+Most of the user documentation was migrated to the Mailu Website : https://mailu.io.
+
 * [[Demo server]]
 * [[Frequently Asked Questions]]
-* [[Setup your DNS]]
 * [[Use your own reverse proxy]]
-* [[Migrate from Freeposte to Mailu]]
-* [[Migrate a Mailu server]]
-* [[Running on Kubernetes]]
 
 # Developers
 
