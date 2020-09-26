@@ -5,6 +5,9 @@ See [PR #1627](https://github.com/Mailu/Mailu/pull/1627) for all commits used fo
 
 All following information is derived from this PR.
 
+## Tag & Branch
+Branch the release off from master. Tag this and push the tag
+
 ## CHANGELOG.md
 change logs (for changelog.md) are generated using the python package [towncrier](https://pypi.org/project/towncrier/).
 
@@ -32,6 +35,10 @@ Update docs/.env with new version
 Update setup/.env with new version  
 After infra is updated, the release will actually be available via mailu.io.
 
+## Change stats endpoint
+This was forgotten from ~1.4 - 1.7. Change
+https://github.com/Mailu/Mailu/blob/master/core/admin/mailu/configuration.py#L27
+to e.g. `18.{}.stats.mailu.io`
 
 ## Summarized
 - [ ] Generate towncrier changelog and add it to CHANGELOG.md
