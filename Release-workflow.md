@@ -5,13 +5,15 @@ See [PR #1627](https://github.com/Mailu/Mailu/pull/1627) for all commits used fo
 
 All following information is derived from this PR.
 
-## Tag & Branch
-Branch the release off from master. Tag this and push the tag
+## New Branch and update Travis
+Create a Branch for the new release (e.g. 1.9).
+Update Travis to pick up the new branch in .travis.yml in root folder of project. See section Branches: in travis.yml.
 
 ## CHANGELOG.md
 change logs (for changelog.md) are generated using the python package [towncrier](https://pypi.org/project/towncrier/).
 
 I think towncrier is run manually and the output is manually added to CHANGELOG.md (in root of project)
+The project root already contains a config file pyproject.toml for towncrier. Possibly this config file must be provided to the towncrier module.  
 CHANGELOG.md should also contain migration notes (added manually)
 
 ## release notes (docs/releases.rst)
@@ -41,6 +43,8 @@ https://github.com/Mailu/Mailu/blob/master/core/admin/mailu/configuration.py#L27
 to e.g. `18.{}.stats.mailu.io`
 
 ## Summarized
+- [ ] Create new branch for release.
+- [ ] Update Travis.yml to use the new branch.
 - [ ] Generate towncrier changelog and add it to CHANGELOG.md
 - [ ] Write short upgrade instructions for CHANGELOG.md
 - [ ] Add verbose written changelog for users to docs/releases.rst
@@ -53,5 +57,4 @@ to e.g. `18.{}.stats.mailu.io`
   - [ ]   Update setup/.env with new version
 
 # TODO
-- [ ] Figure out how a new version is build and published to docker hub. Confirm that BORS(?) or another bot automatically picks up new branches and simply starts building when there is an update for a branch. When a build for a branch succeeds, it is automatically pushed to docker hub. This suspicion is based on the fact that each branch is an image tag in the docker repository. Whenever a PR is merged we also see a new image on the docker repository.
 - [ ] Infrastructure project is used for mailu.io and setup.mailu.io. Check If I missed anything that is required for updating infra project.
