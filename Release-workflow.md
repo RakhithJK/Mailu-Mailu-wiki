@@ -52,6 +52,7 @@ to e.g. `18.{}.stats.mailu.io`
 - [ ] Update docs/conf.py
   - [ ] `versions:` with new version if it is not already listed here.
   - [ ] `stable_version:` to new stable version.
+- [ ] Update stats endpoint url for new release.
 - [ ] Additional steps for Infrastructure project.
   - [ ]   Update docs/.env with new version
   - [ ]   Update setup/.env with new version
