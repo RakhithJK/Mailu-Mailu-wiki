@@ -8,6 +8,7 @@ All following information is derived from this PR.
 ## New Branch and update Travis
 Create a Branch for the new release (e.g. 1.9).
 Update Travis to pick up the new branch in .travis.yml in root folder of project. See section Branches: in travis.yml.
+Update Mergify.yml with new version.
 
 ## CHANGELOG.md
 change logs (for changelog.md) are generated using the python package [towncrier](https://pypi.org/project/towncrier/).
@@ -45,6 +46,7 @@ to e.g. `18.{}.stats.mailu.io`
 ## Summarized
 - [ ] Create new branch for release.
 - [ ] Update Travis.yml to use the new branch.
+- [ ] Update mergify with new version/branch.
 - [ ] Generate towncrier changelog and add it to CHANGELOG.md
 - [ ] Write short upgrade instructions for CHANGELOG.md
 - [ ] Add verbose written changelog for users to docs/releases.rst
@@ -56,6 +58,3 @@ to e.g. `18.{}.stats.mailu.io`
 - [ ] Additional steps for Infrastructure project.
   - [ ]   Update docs/.env with new version
   - [ ]   Update setup/.env with new version
-
-# TODO
-- [ ] Infrastructure project is used for mailu.io and setup.mailu.io. Check If I missed anything that is required for updating infra project.
