@@ -9,6 +9,7 @@ All following information is derived from this PR.
 Create a Branch for the new release (e.g. 1.9).
 Update Travis to pick up the new branch in .travis.yml in root folder of project. See section Branches: in travis.yml.
 Update Mergify.yml with new version.
+Change the description of the type/backport label.
 
 ## CHANGELOG.md
 change logs (for changelog.md) are generated using the python package [towncrier](https://pypi.org/project/towncrier/).
