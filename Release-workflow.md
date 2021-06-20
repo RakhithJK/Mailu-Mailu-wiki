@@ -46,6 +46,9 @@ This was forgotten from ~1.4 - 1.7. Change
 https://github.com/Mailu/Mailu/blob/master/core/admin/mailu/configuration.py#L27
 to e.g. `18.{}.stats.mailu.io`
 
+## Create new github release.
+go to https://github.com/Mailu/Mailu/releases and create a new release. Indicate where to locate the documentation and the setup site.
+
 ## Summarized
 - [ ] Create new branch for release.
 - [ ] Update Travis.yml to use the new branch.
@@ -61,3 +64,4 @@ to e.g. `18.{}.stats.mailu.io`
 - [ ] Additional steps for Infrastructure project.
   - [ ]   Update docs/.env with new version
   - [ ]   Update setup/.env with new version
+- [ ] Create new github release
