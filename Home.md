@@ -5,8 +5,7 @@ Here You will only find developer docs. For the time being everything is still W
 \
 \
 
-Service details
-=
+# Service details
 
 Describe for each service (image):
 * Purpose of service and general description.
@@ -32,8 +31,8 @@ services:
 * docs / docs
 * setup / setup
 
-Admin / Admin
-==
+## Admin / Admin
+
 Docker Image Name: admin
 Technical Name: admin
 Location: /core/admin
@@ -43,8 +42,7 @@ Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
 Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
 
-Imap / Dovecot
-==
+## Imap / Dovecot
 Docker Image Name: imap
 Technical Name: dovecot
 Location: /core/dovecot
@@ -54,8 +52,7 @@ Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
 Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
 
-Front / Nginx
-==
+## Front / Nginx
 Docker Image Name: front
 Technical Name: nginx
 Location: /core/nginx
@@ -65,8 +62,7 @@ Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
 Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
 
-Smtp / Postfix
-==
+## Smtp / Postfix
 Docker Image Name: smtp
 Technical Name: postfix
 Location: /core/postfix
@@ -76,8 +72,7 @@ Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
 Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
 
-Antispam / Rspamd
-==
+## Antispam / Rspamd
 Docker Image Name: antispam
 Technical Name: rspamd
 Location: /core/rspamd
@@ -87,8 +82,7 @@ Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
 Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
 
-Antivirus / Clamav
-==
+## Antivirus / Clamav
 Docker Image Name: antivirus
 Technical Name: clamav
 Location: /optional/clamav
@@ -98,8 +92,7 @@ Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
 Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
 
-Fetchmail / Fetchmail
-==
+## Fetchmail / Fetchmail
 Docker Image Name: fetchmail
 Technical Name: fetchmail
 Location: /optional/fetchmail
@@ -109,8 +102,7 @@ Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
 Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
 
-Webdav / Radicale
-==
+## Webdav / Radicale
 Docker Image Name: webdav
 Technical Name: radicale
 Location: /optional/radicale
@@ -120,8 +112,7 @@ Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
 Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
 
-Traefik-certdumper / Traefik-certdumper
-==
+## Traefik-certdumper / Traefik-certdumper
 Docker Image Name: traefik-certdumper
 Technical Name: traefik-certdumper
 Location: /optional/traefik-certdumper
@@ -131,8 +122,7 @@ Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
 Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
 
-Resolver / Unbound
-==
+## Resolver / Unbound
 Docker Image Name: Resolver
 Technical Name: Unbound
 Location: /optional/unbound
@@ -142,8 +132,7 @@ Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
 Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
 
-Rainloop / Rainloop
-==
+## Rainloop / Rainloop
 Docker Image Name: rainloop
 Technical Name: rainloop
 Location: location in project
@@ -153,8 +142,7 @@ Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
 Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
 
-roundcube
-==
+## roundcube
 Docker Image Name: Image name
 Technical Name: Main Image technology / software
 Location: /webmails/roundcube
@@ -164,8 +152,7 @@ Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
 Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
 
-Docs / Docs
-==
+## Docs / Docs
 Docker Image Name: docs
 Technical Name: docs
 Location: /docs
@@ -175,8 +162,7 @@ Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
 Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
 
-Setup / Setup
-==
+## Setup / Setup
 Docker Image Name: Image name
 Technical Name: Main Image technology / software
 Location: /setup
@@ -187,8 +173,7 @@ Overrides: bullet point list of override folder
 Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
 
 
-Architecture
-=
+# Architecture
 * location to describe how certain general features work in detail. E.g.
   * authentication architecture
   * integration of antispam in rspamd (instead of as milter)
