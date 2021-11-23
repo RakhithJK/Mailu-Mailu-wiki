@@ -5,8 +5,8 @@ Here You will only find developer docs. For the time being everything is still W
 \
 \
 
-Todo
-==
+Service details
+=
 
 Describe for each service (image):
 * Purpose of service and general description.
@@ -15,18 +15,7 @@ Describe for each service (image):
 * How is the configuration managed.
 * Explanation of file structure for each service in the project. 
 
-Architecture:
-* location to describe how certain general features work in detail. E.g.
-  * authentication architecture
-  * integration of antispam in rspamd (instead of as milter)
-  * how dkim/dmarc/arc is handled
-  * admin that provides access to data stored in the database for all other services.
-  * Podop
-  * etc
-* Picture that shows how all services are linked to each other
-  * also describe what kind of communication we have between all services.
-
- List of all services (image name / technical name )
+List of all services (image name / technical name )
 services:
 * Admin / Admin
 * Imap /Dovecot
@@ -48,7 +37,7 @@ Admin / Admin
 Docker Image Name: admin
 Technical Name: admin
 Location: /core/admin
-General purpose: how would you describe it in one sentence?
+General purpose: Provides the web-based administration interface and handles all non-mail tasks.
 General features: Longer bullet point list of features.
 Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
@@ -58,8 +47,8 @@ Imap / Dovecot
 ==
 Docker Image Name: imap
 Technical Name: dovecot
-Location: location in project
-General purpose: how would you describe it in one sentence?
+Location: /core/dovecot
+General purpose: Provides IMAP/POP3 access (access to emails).
 General features: Longer bullet point list of features.
 Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
@@ -69,8 +58,8 @@ Front / Nginx
 ==
 Docker Image Name: front
 Technical Name: nginx
-Location: location in project
-General purpose: how would you describe it in one sentence?
+Location: /core/nginx
+General purpose: The main entry point (reverse proxy) for Mailu. Also handles SSL certificates.
 General features: Longer bullet point list of features.
 Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
@@ -80,8 +69,8 @@ Smtp / Postfix
 ==
 Docker Image Name: smtp
 Technical Name: postfix
-Location: location in project
-General purpose: how would you describe it in one sentence?
+Location: /core/postfix
+General purpose: Provides the SMTP server for receiving emails.
 General features: Longer bullet point list of features.
 Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
@@ -91,8 +80,8 @@ Antispam / Rspamd
 ==
 Docker Image Name: antispam
 Technical Name: rspamd
-Location: location in project
-General purpose: how would you describe it in one sentence?
+Location: /core/rspamd
+General purpose: Provides spam filtering.
 General features: Longer bullet point list of features.
 Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
@@ -102,8 +91,8 @@ Antivirus / Clamav
 ==
 Docker Image Name: antivirus
 Technical Name: clamav
-Location: location in project
-General purpose: how would you describe it in one sentence?
+Location: /optional/clamav
+General purpose: provides antivirus scanning for emails and email attachments.
 General features: Longer bullet point list of features.
 Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
@@ -113,8 +102,8 @@ Fetchmail / Fetchmail
 ==
 Docker Image Name: fetchmail
 Technical Name: fetchmail
-Location: location in project
-General purpose: how would you describe it in one sentence?
+Location: /optional/fetchmail
+General purpose: Allows for fetching (pulling) emails from other email accounts.
 General features: Longer bullet point list of features.
 Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
@@ -124,8 +113,8 @@ Webdav / Radicale
 ==
 Docker Image Name: webdav
 Technical Name: radicale
-Location: location in project
-General purpose: how would you describe it in one sentence?
+Location: /optional/radicale
+General purpose: Provides address book and calendar management via webdav.
 General features: Longer bullet point list of features.
 Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
@@ -135,8 +124,8 @@ Traefik-certdumper / Traefik-certdumper
 ==
 Docker Image Name: traefik-certdumper
 Technical Name: traefik-certdumper
-Location: location in project
-General purpose: how would you describe it in one sentence?
+Location: /optional/traefik-certdumper
+General purpose: Helper image to dump Traefik certificates to Mailu.
 General features: Longer bullet point list of features.
 Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
@@ -146,8 +135,8 @@ Resolver / Unbound
 ==
 Docker Image Name: Resolver
 Technical Name: Unbound
-Location: location in project
-General purpose: how would you describe it in one sentence?
+Location: /optional/unbound
+General purpose: Provides dedicated DNS server
 General features: Longer bullet point list of features.
 Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
@@ -158,7 +147,7 @@ Rainloop / Rainloop
 Docker Image Name: rainloop
 Technical Name: rainloop
 Location: location in project
-General purpose: how would you describe it in one sentence?
+General purpose: Provides webmail access for Mailu email accounts
 General features: Longer bullet point list of features.
 Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
@@ -168,8 +157,8 @@ roundcube
 ==
 Docker Image Name: Image name
 Technical Name: Main Image technology / software
-Location: location in project
-General purpose: how would you describe it in one sentence?
+Location: /webmails/roundcube
+General purpose: Provides webmail access for Mailu email accounts
 General features: Longer bullet point list of features.
 Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
@@ -179,8 +168,8 @@ Docs / Docs
 ==
 Docker Image Name: docs
 Technical Name: docs
-Location: location in project
-General purpose: how would you describe it in one sentence?
+Location: /docs
+General purpose: Hosts documentation of Mailu project
 General features: Longer bullet point list of features.
 Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
@@ -190,9 +179,24 @@ Setup / Setup
 ==
 Docker Image Name: Image name
 Technical Name: Main Image technology / software
-Location: location in project
-General purpose: how would you describe it in one sentence?
+Location: /setup
+General purpose: Setup wizard website for creating docker-compose.yml and mailu.env file.
 General features: Longer bullet point list of features.
 Volume mapping: bullet point list of mapping to /mailu folder.
 Overrides: bullet point list of override folder
 Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
+
+
+Architecture
+=
+* location to describe how certain general features work in detail. E.g.
+  * authentication architecture
+  * integration of antispam in rspamd (instead of as milter)
+  * how dkim/dmarc/arc is handled
+  * admin that provides access to data stored in the database for all other services.
+  * Podop
+  * Other concepts?
+  * etc
+* Picture that shows how all services are linked to each other
+  * also describe what kind of communication we have between all services.
+  * We can create this as soon the service descriptions are done.
