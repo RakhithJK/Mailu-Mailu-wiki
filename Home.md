@@ -139,6 +139,7 @@ Docker Image Name: admin
 * Overrides: None
 * Connectivity: 
   * Other services services connect to Resolver/Unbound for DNS resolution. These services are:
+    * front / nginx
     * smtp / postfix
     * antispam / rspamd
     * antivirus / clamav
