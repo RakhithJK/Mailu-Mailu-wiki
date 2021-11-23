@@ -44,12 +44,19 @@ Docker Image Name: admin
 
 ## Imap / Dovecot
 Docker Image Name: imap
+
 Technical Name: dovecot
+
 Location: /core/dovecot
+
 General purpose: Provides IMAP/POP3 access (access to emails).
+
 General features: Longer bullet point list of features.
+
 Volume mapping: bullet point list of mapping to /mailu folder.
+
 Overrides: bullet point list of override folder
+
 Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
 
 ## Front / Nginx
