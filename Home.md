@@ -34,13 +34,13 @@ services:
 ## Admin / Admin
 
 Docker Image Name: admin
-Technical Name: admin
-Location: /core/admin
-General purpose: Provides the web-based administration interface and handles all non-mail tasks.
-General features: Longer bullet point list of features.
-Volume mapping: bullet point list of mapping to /mailu folder.
-Overrides: bullet point list of override folder
-Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
+* Technical Name: admin
+* Location: /core/admin
+* General purpose: Provides the web-based administration interface and handles all non-mail tasks.
+* General features: Longer bullet point list of features.
+* Volume mapping: bullet point list of mapping to /mailu folder.
+* Overrides: bullet point list of override folder
+* Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
 
 ## Imap / Dovecot
 Docker Image Name: imap
