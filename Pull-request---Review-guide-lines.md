@@ -16,6 +16,8 @@ This article describes all metrics that must be used for reviewing a pull reques
 * Actually read the documentation via a running documentation container.
   * Sometimes it is rendered differently than expected. Actually reading the modified docs via the running documentation container helps catching this.
 * PR is for a single feature or bug.
+* Tests are updated accordingly.
+  * For larger new functionality, the PR must also update the tests.
 * PEP8 compliant. 
   * In the future we will have github actions checking this. Does the workflow state it is PEP8 compliant?
   * PR can only be merged if it is compliant. Any findings must be addressed.
