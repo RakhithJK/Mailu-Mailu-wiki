@@ -13,6 +13,8 @@ This article describes all metrics that must be used for reviewing a pull reques
 * Documentation is updated
   * Features / enhancements that change the functioning of the software, result normally in documentation that must be updated.
   * Have a quick look at the relevant documentation and ask yourself if this is still sufficient after merging this PR.
+* Actually read the documentation via a running documentation container.
+  * Sometimes it is rendered differently than expected. Actually reading the modified docs via the running documentation container helps catching this.
 * PR is for a single feature or bug.
 * PEP8 compliant. 
   * In the future we will have github actions checking this. Does the workflow state it is PEP8 compliant?
@@ -34,12 +36,21 @@ docker-compose up -d
 ```
 
 ## Testing/Reading documentation changes
-Further fill this in.
+Two examples for running the documentation image.
+
 ```
+#For checked out PR repo
 cd <Mailu repo>
 docker-compose -f tests/build.yml build docs
 echo visit http://127.0.0.1:1234/local/
-docker run -p 127.0.0.1:1234:80 docs
+docker run --rm -p 127.0.0.1:1234:80 docs
+```
+```
+#For testing PR documentation image
+#Replace pr-#### with the PR number. 
+#E.g. for PR 2021 the tag is pr-2021.
+echo visit http://127.0.0.1:1234/pr-####/
+docker run --rm -p 127.0.0.1:1234:80 mailuci/docs:pr-####
 ```
 
 ## Quickly checking out code PR
