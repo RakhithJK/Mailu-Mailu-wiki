@@ -16,7 +16,7 @@ This article describes all metrics that must be used for reviewing a pull reques
 * Actually read the documentation via a running documentation container.
   * Sometimes it is rendered differently than expected. Actually reading the modified docs via the running documentation container helps catching this.
 * PR is for a single feature or bug.
-* If it changes the UI, double check it does not break any translations.
+* Translations: If it changes the UI, double check it does not break any translations.
   * The Mailu web administration interface is fully translated in 18 languages. We should take care that these translations are retained when making changes to the UI.
 * Tests are updated accordingly.
   * For larger new functionality, the PR must also update the tests.
