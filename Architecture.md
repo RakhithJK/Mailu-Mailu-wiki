@@ -60,10 +60,30 @@ Docker Image Name: admin
 * Technical Name: postfix
 * Location: /core/postfix
 * General purpose: Provides the SMTP server for receiving emails.
-* General features: Longer bullet point list of features.
-* Volume mapping: bullet point list of mapping to /mailu folder.
+* General features: 
+  * Provides SMTP capabilities.
+  * Authentication is handled via Front/Admin
+  * Fully automatically configured via Web Administration interface.
+  * MTA-STS (SMTP MTA Strict Transport Security)
+  * DANE validation.
+* Volume mapping:
+  * "/mailu/mailqueue:/queue" - contains all the user's email boxes.
 * Overrides: bullet point list of override folder
-* Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
+  * - "/mailu/overrides/postfix:/overrides:ro":
+    * all postfix config files (https://mailu.io/master/faq.html#how-can-i-override-settings)
+    * overrides/postfix/tls_policy.map - overrides MTA-STS. E.g. can be used to temporarily downgrade security for a destination that has incorrectly configured (failing) MTA-STS policy / DANE.
+* Connectivity: 
+  * Front/Nginx > smtp/postfix
+    * Front proxies postfix
+  * Front/Nginx > admin > smtp/postfix
+    * front authenticates any users via admin, before proxying the connection to postfix.
+  * smtp/postfix > admin
+    * uses Podop to retrieve configuration from Admin via http://admin/internal/postfix/
+    * This allows postfix to retrieve all setting configured in the web administration gui for postfix.
+  * smtp/postfix > antispam/rspamd
+    * Uses rspamd as milter. 
+      * For received emails, ask rspamd to accept/reject the email.
+      * For received emails for sending from clients, ask rspamd to sign the email (dkim/arc).
 
 ## Antispam / Rspamd
 * Docker Image Name: antispam
