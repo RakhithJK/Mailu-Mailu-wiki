@@ -5,10 +5,9 @@ See [PR #1627](https://github.com/Mailu/Mailu/pull/1627) for all commits used fo
 
 All following information is derived from this PR.
 
-## New Branch and update Travis
+## New Branch and update github actions (CI.yml)
 Create a Branch for the new release (e.g. 1.9). 
 
-~~Update Travis to pick up the new branch in .travis.yml in root folder of project. See section Branches: in travis.yml.~~
 Update Mergify.yml with new version.
 
 Update the workflow yml file (used for github actions) to pick up the new branch in .github/workflows/..yml
