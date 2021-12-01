@@ -68,10 +68,48 @@ Docker Image Name: admin
 * Technical Name: nginx
 * Location: /core/nginx
 * General purpose: The main entry point (reverse proxy) for Mailu. Also handles SSL certificates.
-* General features: Longer bullet point list of features.
-* Volume mapping: bullet point list of mapping to /mailu folder.
-* Overrides: bullet point list of override folder
-* Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
+* General features:
+  * Certbot. Via let's encrypt requests new SSL certificates and renew existing certificates.
+  * The front facing webserver. **ALL** communication to Mailu **ALWAYS** go through front.
+  * Acts as reverse proxy for all other web services.
+  * Nginx Mail proxy. Reverse Proxying of SMTP and IMAP/POP3 servers.
+  * Authenticates all incoming connections (via Admin) before forwarding a request.
+  * Serves via fastcgi (?) php-fpm applications (roundcube (soon hopefully) / rainloop).
+* Volume mapping: 
+  * "/mailu/certs:/certs" - contains all SSL certificates
+* Overrides:
+  * "/mailu/overrides/nginx:/overrides:ro" - can be used to add additional configuration to the nginx file.
+* Connectivity: 
+  * front/nginx > imap/dovecot
+    * front proxies dovecot.
+  * front/nginx > admin > imap/dovecot
+    * For authentication, front checks via admin if authentication details are correct.
+    * If admin states authentication checks out, the connection is proxied to dovecot.
+  * Front/Nginx > smtp/postfix
+    * Front proxies postfix
+  * Front/Nginx > admin > smtp/postfix
+    * front authenticates any users via admin, before proxying the connection to postfix.
+  * Front/Nginx > Antispam/Rspamd
+    * Front proxies Antispam.
+    * Front authenticates the user (via admin) before providing access to Rspamd.
+  * Front -> Radicale
+    * Front handles (basic) authentication and provides the username via HTTP_X_USER header to Radicale.
+  * Front > Resolver/Unbound
+    * When enabled, unbound is used for resolving dns/hostname lookups.
+  * Front > Rainloop
+    * Front proxies Rainloop. Users connect via Front/Nginx to Rainloop.
+  * Rainloop > redirects internet browser to Front 
+    * For user authentication, Rainloop redirects the user (internet browser) to the SSO page to login.
+    * If the user is authenticated and tries to access webmail, a one time token is generated.
+    * Username and one time token are passed via HTTP headers to Rainloop.
+    * Rainloop uses the username and one time token for connecting to Imap/dovecot.    
+  * Front > Roundcube
+    * Front proxies roundcube. Users connect via Front/Nginx to Roundcube.
+  * Roundcube > redirects internet browser to Front 
+    * For user authentication, Roundcube redirects the user (internet browser) to the SSO page to login.
+    * If the user is authenticated and tries to access webmail, a one time token is generated.
+    * Username and one time token are passed via HTTP headers to Rainloop.
+    * Roundcube uses the username and one time token for connecting to Imap/dovecot
 
 ## Smtp / Postfix
 * Docker Image Name: smtp
@@ -104,6 +142,8 @@ Docker Image Name: admin
       * For received emails for sending from clients, ask rspamd to sign the email (dkim/arc).
   * smtp/postfix > imap/dovecot
     * Messages received by postfix are transported to dovecot.(LMTP: imap:2525)
+   * smtp/postfix > resolver/unbound
+     * If enabled, uses unbound for dns resolution.
 
 ## Antispam / Rspamd
 * Docker Image Name: antispam
@@ -138,6 +178,8 @@ Docker Image Name: admin
     * Dovecot reports via rspamc (rspam client) to rspamd HAM and SPAM. Used for bayes learning.
   * Antispam/Rspamd > Redis
     * Stores history in Redis. Perhaps also other things I'm not aware of.
+   * Antispam/rspamd > resolver/unbound
+     * If enabled, uses unbound for dns resolution.
 
 ## Antivirus / Clamav
 * Docker Image Name: antivirus
@@ -153,6 +195,8 @@ Docker Image Name: admin
 * Connectivity: 
   * Postfix -> Rspamd -> Clamav
     * Postfix uses Rspamd as milter. Rspamd connects to Clamav for scanning emails for viruses.
+   * antivirus/clamav > resolver/unbound
+     * If enabled, uses unbound for dns resolution.
 
 ## Fetchmail / Fetchmail
 * Docker Image Name: fetchmail
@@ -172,6 +216,8 @@ Docker Image Name: admin
   * Fetchmail > Admin
     * Fetchmail retrieves (GET) from http://admin/internal/fetch the email inboxes that must be fetched.
     * Fetchmail submits (POST) the results of the last operation to http://admin/internal/fetch.
+   * Fetchmail > resolver/unbound
+     * If enabled, uses unbound for dns resolution.
 
 ## Webdav / Radicale
 * Docker Image Name: webdav
