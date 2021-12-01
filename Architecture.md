@@ -50,8 +50,14 @@ Docker Image Name: admin
 * Overrides: 
   * "/mailu/overrides/dovecot/dovecot.conf:/overrides/dovecot.conf:ro" - Used to add/override settings in dovecot.conf
 * Connectivity: 
+  * front/nginx > imap/dovecot
+    * front proxies dovecot.
+  * front/nginx > admin > imap/dovecot
+    * For authentication, front checks via admin if authentication details are correct.
+    * If admin states authentication checks out, the connection is proxied to dovecot.
   * imap/dovecot > admin
     * uses podop to retrieve settings from admin (which are set in administration web interface). Via address http://admin/internal/dovecot
+    * uses podop to retrieve user authentication settings (info if the user exists/ user is enabled)
   * Imap/Dovecot > Antispam/Rspamd
     * Dovecot reports via rspamc (rspam client) to rspamd HAM and SPAM. Used for bayes learning.
   * smtp/postfix > imap/dovecot
