@@ -90,20 +90,35 @@ Docker Image Name: admin
 * Technical Name: fetchmail
 * Location: /optional/fetchmail
 * General purpose: Allows for fetching (pulling) emails from other email accounts.
-* General features: Longer bullet point list of features.
-* Volume mapping: bullet point list of mapping to /mailu folder.
-* Overrides: bullet point list of override folder
-* Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
+* General features:
+  * Fetches emails from other email accounts into the user's Mailu email account.
+  * Fully configured via Web Administration interface.
+  * Web Administration interface shows results
+    * DateTime of last fetch.
+    * Any error messages.
+* Volume mapping:
+  * "/mailu/data/fetchmail:/data" - is used for storing a file that keeps track of fetched emails.
+* Overrides: None
+* Connectivity: 
+  * Fetchmail > Admin
+    * Fetchmail retrieves (GET) from http://admin/internal/fetch the email inboxes that must be fetched.
+    * Fetchmail submits (POST) the results of the last operation to http://admin/internal/fetch.
 
 ## Webdav / Radicale
 * Docker Image Name: webdav
 * Technical Name: radicale
 * Location: /optional/radicale
 * General purpose: Provides address book and calendar management via webdav.
-* General features: Longer bullet point list of features.
-* Volume mapping: bullet point list of mapping to /mailu folder.
-* Overrides: bullet point list of override folder
-* Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
+* General features: 
+  * (Basic) Authentication is handled by Front/Admin.
+  * Provides address book via webdav for each Mailu user.
+  * Provides calendar management via webdav for each Mailu user.
+* Volume mapping: 
+  * "/mailu/dav:/data" - contains all data of radicale for each user.
+* Overrides: None
+* Connectivity: 
+  * Front -> Radicale
+    * Front handles (basic) authentication and provides the username via HTTP_X_USER header to Radicale.
 
 ## Traefik-certdumper / Traefik-certdumper
 * Docker Image Name: traefik-certdumper
@@ -155,10 +170,11 @@ Docker Image Name: admin
 * Connectivity: 
   * Front > Rainloop
     * Front proxies Rainloop. Users connect via Front/Nginx to Rainloop.
-  * Rainloop > Front
-    * Connects to Front to authenticate the current user.
-    * If the current user is not authenticates, Rainloop redirect the user to the SSO login page of admin.
-    * If the current is is authenticated, the user is logged on.
+  * Rainloop > redirects internet browser to Front 
+    * For user authentication, Rainloop redirects the user (internet browser) to the SSO page to login.
+    * If the user is authenticated and tries to access webmail, a one time token is generated.
+    * Username and one time token are passed via HTTP headers to Rainloop.
+    * Rainloop uses the username and one time token for connecting to Imap/dovecot.
   * Rainloop > Imap
     * Connect as IMAP client to imap/dovecot.
 
@@ -179,10 +195,11 @@ Docker Image Name: admin
 * Connectivity: 
   * Front > Roundcube
     * Front proxies roundcube. Users connect via Front/Nginx to Roundcube.
-  * Roundcube > Front
-    * Connects to Front to authenticate the current user.
-    * If the current user is not authenticates, roundcube redirect the user to the SSO login page of admin.
-    * If the current is is authenticated, the user is logged on.
+  * Roundcube > redirects internet browser to Front 
+    * For user authentication, Roundcube redirects the user (internet browser) to the SSO page to login.
+    * If the user is authenticated and tries to access webmail, a one time token is generated.
+    * Username and one time token are passed via HTTP headers to Rainloop.
+    * Roundcube uses the username and one time token for connecting to Imap/dovecot.
   * Roundcube > Imap
     * Connect as IMAP client to imap/dovecot.
 
