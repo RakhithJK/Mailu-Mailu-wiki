@@ -70,20 +70,49 @@ Docker Image Name: admin
 * Technical Name: rspamd
 * Location: /core/rspamd
 * General purpose: Provides spam filtering.
-* General features: Longer bullet point list of features.
-* Volume mapping: bullet point list of mapping to /mailu folder.
-* Overrides: bullet point list of override folder
-* Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
+* General features: 
+  * Has authentication. Front/Admin authenticates user before providing access to rspamd.
+  * Antivirus checking of emails (uses clamav for this)
+  * Spam checking via many different metrics. See https://rspamd.com/features.html for a list.
+  * ARC signing
+  * DKIM signing
+  * learning via ham/spam
+  * Very neat Web UI.
+* Volume mapping:
+  * "/mailu/filter:/var/lib/rspamd" - contains rspamd settings (made in web ui) and bayes classifying (users marking email as spam/ham).     
+* Overrides: 
+  * "/mailu/overrides/rspamd:/etc/rspamd/override.d:ro" - contains overrides for rspamd configuration. 
+* Connectivity: 
+  * Front/Nginx > Antispam/Rspamd
+    * Front proxies Antispam.
+    * Front authenticates the user (via admin) before providing access to Rspamd.
+  * Smtp/Postfix > Antispam/Rspamd
+    * Uses rspamd as milter (should I accept this email or reject it...), but also other things.
+      * antivirus (does the email contain a virus)
+      * spam check (is this email spam?)
+      * ARC signing
+      * Dkim signing
+  * Antispam/Rspamd > Antivirus/Clamav
+    * Uses clamav to scan email for viruses.
+  * Imap/Dovecot > Antispam/Rspamd
+    * Dovecot reports via rspamc (rspam client) to rspamd HAM and SPAM. Used for bayes learning.
+  * Antispam/Rspamd > Redis
+    * Stores history in Redis. Perhaps also other things I'm not aware of.
 
 ## Antivirus / Clamav
 * Docker Image Name: antivirus
 * Technical Name: clamav
 * Location: /optional/clamav
 * General purpose: provides antivirus scanning for emails and email attachments.
-* General features: Longer bullet point list of features.
-* Volume mapping: bullet point list of mapping to /mailu folder.
-* Overrides: bullet point list of override folder
-* Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
+* General features: 
+  * Clamav automatically updates itself using freshclam.
+  * Scans incoming and outgoing emails for viruses.
+* Volume mapping: 
+  * "/mailu/filter:/data" - contains downloaded virus definitions.
+* Overrides: None
+* Connectivity: 
+  * Postfix -> Rspamd -> Clamav
+    * Postfix uses Rspamd as milter. Rspamd connects to Clamav for scanning emails for viruses.
 
 ## Fetchmail / Fetchmail
 * Docker Image Name: fetchmail
