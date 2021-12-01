@@ -40,10 +40,22 @@ Docker Image Name: admin
 * Technical Name: dovecot
 * Location: /core/dovecot
 * General purpose: Provides IMAP/POP3 access (access to emails).
-* General features: Longer bullet point list of features.
-* Volume mapping: bullet point list of mapping to /mailu folder.
-* Overrides: bullet point list of override folder
-* Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a * dependency overview.
+* General features: 
+  * Provides IMAP/POP3 access (access to emails).
+  * Authentication is handled by Front/Admin
+  * Provides sieve functionality?
+  * Marks email as spam/ham when email is move to/from Junk/Spam folder.
+* Volume mapping:
+  * "/mailu/mail:/mail" - contains all email boxes
+* Overrides: 
+  * "/mailu/overrides/dovecot/dovecot.conf:/overrides/dovecot.conf:ro" - Used to add/override settings in dovecot.conf
+* Connectivity: 
+  * imap/dovecot > admin
+    * uses podop to retrieve settings from admin (which are set in administration web interface). Via address http://admin/internal/dovecot
+  * Imap/Dovecot > Antispam/Rspamd
+    * Dovecot reports via rspamc (rspam client) to rspamd HAM and SPAM. Used for bayes learning.
+  * smtp/postfix > imap/dovecot
+    * Messages received by postfix are transported to dovecot.(LMTP: imap:2525)
 
 ## Front / Nginx
 * Docker Image Name: front
@@ -67,7 +79,7 @@ Docker Image Name: admin
   * MTA-STS (SMTP MTA Strict Transport Security)
   * DANE validation.
 * Volume mapping:
-  * "/mailu/mailqueue:/queue" - contains all the user's email boxes.
+  * "/mailu/mailqueue:/queue" - contains all received emails that must still be processed (sent to imap server or sent to other email servers).
 * Overrides: bullet point list of override folder
   * - "/mailu/overrides/postfix:/overrides:ro":
     * all postfix config files (https://mailu.io/master/faq.html#how-can-i-override-settings)
@@ -84,6 +96,8 @@ Docker Image Name: admin
     * Uses rspamd as milter. 
       * For received emails, ask rspamd to accept/reject the email.
       * For received emails for sending from clients, ask rspamd to sign the email (dkim/arc).
+  * smtp/postfix > imap/dovecot
+    * Messages received by postfix are transported to dovecot.(LMTP: imap:2525)
 
 ## Antispam / Rspamd
 * Docker Image Name: antispam
