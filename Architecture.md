@@ -155,6 +155,12 @@ Docker Image Name: admin
     * Roundcube uses the username and one time token for connecting to Imap/dovecot
   * imap/dovecot > front > postfix
     * In the context of a sieve script, when an email is forwarded, then this goes via front.
+  * Rainloop > Front
+    * Connect as IMAP client to front/nginx.
+    * Connect as SMTP client to front/nginx.
+  * Roundcube > Front
+    * Connect as IMAP client to front/nginx.
+    * Connect as SMTP client to front/nginx.
 
 ## Smtp / Postfix
 * Docker Image Name: smtp
@@ -335,8 +341,11 @@ Docker Image Name: admin
     * If the user is authenticated and tries to access webmail, a one time token is generated.
     * Username and one time token are passed via HTTP headers to Rainloop.
     * Rainloop uses the username and one time token for connecting to Imap/dovecot.
-  * Rainloop > Imap
-    * Connect as IMAP client to imap/dovecot.
+  * Rainloop > Imap/dovecot
+    * Connects to imap/dovecot for sieve.
+  * Rainloop > Front
+    * Connect as IMAP client to front/nginx.
+    * Connect as SMTP client to front/nginx.
 
 ## roundcube
 * Docker Image Name: Image name
@@ -360,8 +369,11 @@ Docker Image Name: admin
     * If the user is authenticated and tries to access webmail, a one time token is generated.
     * Username and one time token are passed via HTTP headers to Rainloop.
     * Roundcube uses the username and one time token for connecting to Imap/dovecot.
-  * Roundcube > Imap
-    * Connect as IMAP client to imap/dovecot.
+  * Roundcube > Imap/dovecot
+    * Connects to imap/dovecot for sieve.
+  * Roundcube > Front
+    * Connect as IMAP client to front/nginx.
+    * Connect as SMTP client to front/nginx.
 
 ## Docs / Docs
 * Docker Image Name: docs
