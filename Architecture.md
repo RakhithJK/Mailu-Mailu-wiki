@@ -30,10 +30,51 @@ Docker Image Name: admin
 * Technical Name: admin
 * Location: /core/admin
 * General purpose: Provides the web-based administration interface and handles all non-mail tasks.
-* General features: Longer bullet point list of features.
-* Volume mapping: bullet point list of mapping to /mailu folder.
-* Overrides: bullet point list of override folder
-* Connectivity: Bullet point list to what other images it connects, for what purpose, and the direction. I guess this means it is also a dependency overview.
+* General features: 
+  * Administration Web Interface for user configuration and (admin) domain configuration.
+  * Single sign on page for accessing the administration web interface or webmail.
+  * Handles database configuration.
+    * Supports SQLite as database back end.
+    * Supports PostgreSQL as database back end.
+    * Supports MySQL/MariaDB as database back end.
+  * DKIM generation.
+  * Offers /internal endpoint used by other services for retrieving settings.
+    * Podop (https://github.com/Mailu/Podop). Offers URL endpoint for retrieving settings for postfix/dovecot
+    * Retrieving fetchmail settings. Receiving fetchmail results.
+    * Retrieving rspamd settings (DKIM key, domain name, selector). Info needed by rspamd for dkim signing.
+  * Authentication provider. Handles **all** authentication requests from all Mailu components. Currently this is from front and sso.
+    * **Security**. Provides sophisticated rate limiting for handling automated attacks.
+      * rate limiting on IP (IP failed authentication x amount times, regardless the target login account)
+        * guessing email addresses also counts for this. E.g. trying to login for a non existing email address.
+      * rate limiting on user (login attempts for this user failed x amount times. All IPs cannot login using this user when rate limit is applied).
+      * exemption based on device cookie. A successful login attempt awards the device with a cookie. This cookie allows access even when the user is rate limited (See rate limiting on user).
+  * **Fully translated** in **18** languages.
+* Volume mapping:
+  * "/mailu/data:/data" - contains SQLite database
+  * "/mailu/dkim:/dkim" - contains generated DKIM keys.
+* Overrides: None
+* Connectivity: 
+  * Admin > Redis
+    * Sessions of authenticated users are stored in redis.
+  * front > admin
+    * Front connects to admin for authentication for:
+	  * mail proxy 
+	    * smtp (starttls)
+		* secure smtp (SSL/TLS) (MTA? you know for sending email)
+		* imap
+		* pop3
+		* smtp without user check for internal services (dovecot) or whitelisted domains	  
+	  * webdav/radicale (basic authentication)
+	  * rspamd
+  * imap/dovecot > admin
+    * uses podop to retrieve settings from admin (which are set in administration web interface). Via address http://admin/internal/dovecot
+    * uses podop to retrieve user authentication settings (info if the user exists/ user is enabled)	  
+  * smtp/postfix > admin
+    * uses Podop to retrieve configuration from Admin via http://admin/internal/postfix/
+    * This allows postfix to retrieve all setting configured in the web administration gui for postfix.		  
+  * Fetchmail > Admin
+    * Fetchmail retrieves (GET) from http://admin/internal/fetch the email inboxes that must be fetched.
+    * Fetchmail submits (POST) the results of the last operation to http://admin/internal/fetch.
 
 ## Imap / Dovecot
 * Docker Image Name: imap
