@@ -62,6 +62,8 @@ Docker Image Name: admin
     * Dovecot reports via rspamc (rspam client) to rspamd HAM and SPAM. Used for bayes learning.
   * smtp/postfix > imap/dovecot
     * Messages received by postfix are transported to dovecot.(LMTP: imap:2525)
+  * imap/dovecot > front > postfix
+    * In the context a sieve script, when an email is forwarded, then this goes via front.
 
 ## Front / Nginx
 * Docker Image Name: front
@@ -110,6 +112,8 @@ Docker Image Name: admin
     * If the user is authenticated and tries to access webmail, a one time token is generated.
     * Username and one time token are passed via HTTP headers to Rainloop.
     * Roundcube uses the username and one time token for connecting to Imap/dovecot
+  * imap/dovecot > front > postfix
+    * In the context a sieve script, when an email is forwarded, then this goes via front.
 
 ## Smtp / Postfix
 * Docker Image Name: smtp
