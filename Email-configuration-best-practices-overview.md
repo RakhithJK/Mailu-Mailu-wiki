@@ -5,6 +5,7 @@ The Mailu solution is very complex. Most people don't know how to correctly conf
 - What are the relevant settings?
 - How-To change these settings. Per relevant subject describe how to configure it.
 - best practices? This is what we advise! 
+- MAIN GOAL. Everything should be as easy to understand as possible. if it is too difficult, do not include it.
 
 # Structure of page itself. How we want it to be.
 - General overview (or short list) of all features.
@@ -12,9 +13,6 @@ The Mailu solution is very complex. Most people don't know how to correctly conf
 - Maybe best practices? What do we advise?
 
 # How to	
-- considerations for reverse dns with certificates. Using ecdsa for performance.
-	- Set the headers in your reverse proxy. Configure in mailu.env what header to trust and ip adress.
-- Passwords. Credential_rounds config and what about password crypt?
 - postfix
 	- force starttls (no cert check, encrypt)
 	- force starttls (with cert check, secure?)
