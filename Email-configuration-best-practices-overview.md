@@ -1,38 +1,16 @@
-Draft to brainstorm about the possibility of a new security page. IF we want to continue with this and finish it, we will add it to the documentation and remove this wiki page.
+Draft to brainstorm about the possibility of a new best practices configuration page. IF we want to continue with this and finish it, we will add it to the documentation and remove this wiki page.
 
 ## Goal: 
-The Mailu solution is very complex. Nobody knows what security measures are really in place. Most people don't know how to securely configure Mailu. This page should inform you:
-- What security features does Mailu have?
+The Mailu solution is very complex. Most people don't know how to correctly configure Mailu. This page should inform you:
 - What are the relevant settings?
 - How-To change these settings. Per relevant subject describe how to configure it.
-- Maybe best practices? This is what we advise! 
+- best practices? This is what we advise! 
 
 # Structure of page itself. How we want it to be.
 - General overview (or short list) of all features.
 - How-To tweak/configure each security related setting/topic.
 - Maybe best practices? What do we advise?
 
-# Description of all  security measures in place
-- dkim
-- dmarc
-- arc
-- spf
-- antivirus
-- antispam
-  - realtime black listing
-  - bayes learning 
-  - See https://rspamd.com/features.html
-- Possibility to configure with fail2ban
-- All postfix related stuff?
-  - ?
-  - ?
-- all communication go through one secure front service
-	- rate limiting on failed logon 
-		- per ip
-		- per user
-	- server side session management 
-	- session forgery protection
-	
 # How to	
 - considerations for reverse dns with certificates. Using ecdsa for performance.
 	- Set the headers in your reverse proxy. Configure in mailu.env what header to trust and ip adress.
@@ -68,4 +46,25 @@ mx: mx.example.com\r\n";
       location ^~ /.well-known/mta-sts.txt {
         try_files $uri @mta-sts;
       }
+
+# Move this part to the general features page  (https://mailu.io/master/)
+- dkim
+- dmarc
+- arc
+- spf
+- antivirus
+- antispam
+  - realtime black listing
+  - bayes learning 
+  - See https://rspamd.com/features.html
+- Possibility to configure with fail2ban
+- All postfix related stuff?
+  - ?
+  - ?
+- all communication go through one secure front service
+	- rate limiting on failed logon 
+		- per ip
+		- per user
+	- server side session management 
+	- session forgery protection
 	
