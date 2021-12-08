@@ -14,13 +14,12 @@ The Mailu solution is very complex. Most people don't know how to correctly conf
 
 # How to	
 - postfix
-	- force starttls (no cert check, encrypt)
-	- force starttls (with cert check, secure?)
-	- dane
-	- more I forgot :(
+  - /etc/postfix/tls_policy.map > overrides/postfix/tls_policy 
+  - maybe fingerprinting could be added as well (need nextgens help for this)
 - fail2ban (move this from the FAQ to this page)
-- set mta-sts
-- describe user message rate limit. How to reset this?
+- set mta-sts (domain must be configured as well with domain entry)
+- ability spoof emails. Set wildcards/aliases (in gui). 
+
 
 #1902
 docker-compose exec smtp cat /etc/postfix/tls_policy.map > overrides/postfix/tls_policy
