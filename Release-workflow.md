@@ -5,14 +5,10 @@ See [PR #1627](https://github.com/Mailu/Mailu/pull/1627) for all commits used fo
 
 All following information is derived from this PR.
 
-## New Branch and update github actions (CI.yml)
-Create a Branch for the new release (e.g. 1.9). 
-
+## update configuration files and github action workflow file actions (CI.yml)
 Update Mergify.yml with new version.
 
 Update the workflow yml file (used for github actions) to pick up the new branch in .github/workflows/..yml
-
-Change the description of the type/backport label.
 
 ## CHANGELOG.md
 change logs (for changelog.md) are generated using the python package [towncrier](https://pypi.org/project/towncrier/).
@@ -49,13 +45,15 @@ This was forgotten from ~1.4 - 1.7. Change
 https://github.com/Mailu/Mailu/blob/master/core/admin/mailu/configuration.py#L27
 to e.g. `18.{}.stats.mailu.io`
 
+## New Branch
+Finally create the Branch for the new release (e.g. 1.9). This should automatically trigger the workflow build.
+
 ## Create new github release.
 go to https://github.com/Mailu/Mailu/releases and create a new release. Indicate where to locate the documentation and the setup site.
 
 ## Summarized
 - [ ] Create new branch for release.
-- [ ] ~~Update Travis.yml to use the new branch.~~
-- [ ] Update workflow ?.yml to use the new branch (.github/workflows/?.yml)
+- [ ] Update workflow CI.yml to use the new branch (.github/workflows/CI.yml)
 - [ ] Update mergify with new version/branch.
 - [ ] Generate towncrier changelog and add it to CHANGELOG.md
 - [ ] Write short upgrade instructions for CHANGELOG.md
