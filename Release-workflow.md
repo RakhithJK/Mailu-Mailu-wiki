@@ -13,8 +13,9 @@ Update the workflow yml file (used for github actions) to pick up the new branch
 ## CHANGELOG.md
 change logs (for changelog.md) are generated using the python package [towncrier](https://pypi.org/project/towncrier/).
 
-I think towncrier is run manually and the output is manually added to CHANGELOG.md (in root of project)
-The project root already contains a config file pyproject.toml for towncrier. Possibly this config file must be provided to the towncrier module.  
+After the python towncrier package is installed, in the root of the Mailu project folder run towncrier. On the prompt to delete all files chooses **YES**.
+
+Towncrier adds all newsfragments to CHANGELOG.md. 
 CHANGELOG.md should also contain migration notes (added manually)
 
 ## release notes (docs/releases.rst)
