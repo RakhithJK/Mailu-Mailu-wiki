@@ -37,8 +37,6 @@ to
 See https://github.com/Mailu/infra/commit/626a7f4304a1d964a9d8f1cd12d2a920bad42291  
 Update docs/.env with new version  
 Update setup/.env with new version 
-Note: When still testing the new version, the env variable stable_version must be kept on the previous release.
-Only when the new version is considered stable, change stable_version to the new version and comment out the ${TEST} image in the docker-compose.yml file.
 After infra is updated, the release will actually be available via mailu.io.
 
 ## Change stats endpoint
