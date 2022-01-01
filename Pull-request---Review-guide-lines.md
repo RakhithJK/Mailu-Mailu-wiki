@@ -8,6 +8,7 @@ This article describes all metrics that must be used for reviewing a pull reques
   * For core contributors under special circumstances an exception can be made. But it needs good motivation. E.g. a defect that only happens on this branch.
 * A newsfragment is present (https://mailu.io/master/contributors/workflow.html#changelog). 
   * Normally every PR requires a newsfragment. This will be part of the eventual changelog.md and release notes. Without this newsfragment nobody knows that this PR was merged with the project.
+  * **Double check** that the newsfragment has the **correct suffix**. The suffixes are listed [here (link)](https://mailu.io/1.9/contributors/workflow.html#changelog)
   * Only for very minor changes (E.g. typo fixed in documentation), we do not require a newsfragment.
   * Creating a newsfragment is the standard. Not providing it is the exception.
 * Documentation is updated
