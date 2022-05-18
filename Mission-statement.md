@@ -10,7 +10,7 @@ Our mission is to provide a hasslefree OSS solution for deploying a mail stack w
 
 We will do this by providing a setup utility that will create the mail stack configuration only requiring some general questions as input. 
 We aim to reduce the cost of ownership (required maintenance).
-We will make sure the solution is secure by design without requiring extensive knowledge of current best security practices.
+We will make sure the solution is secure by design without requiring extensive knowledge of current security best practices.
 
 However, the system administrator needs at least basic knowledge in regard to networking (ip address, firewalls), how to configure DNS records and how to configure reverse DNS (ptr) records.
 
