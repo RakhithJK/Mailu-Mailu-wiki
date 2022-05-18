@@ -12,7 +12,7 @@ We will do this by providing a setup utility that will create the complete mail 
 We aim to reduce the cost of ownership (required maintenance).
 We will make sure the solution is secure by design without requiring extensive knowledge of software security practices.
 
-However, the system administrator needs at least basic knowledge in regard to IP addresses, how to configure DNS records and how to configure reverse DNS (ptr) records.
+However, the system administrator needs at least basic knowledge in regard to networking (ip address, firewalls), how to configure DNS records and how to configure reverse DNS (ptr) records.
 
 Mailu is an OSS project. Anyone can contribute to the project as long their contribution follows the core goals of Mailu. 
 
