@@ -8,7 +8,7 @@ Our vision is to provide a software solution for running your own mail server.
 # Mission
 Our mission is to provide a hasslefree OSS solution for deploying a mail stack without extensive knowledge of email software.
 
-We will do this by providing a setup utility that will create the complete mail stack configuration only requiring some general questions as input. 
+We will do this by providing a setup utility that will create the mail stack configuration only requiring some general questions as input. 
 We aim to reduce the cost of ownership (required maintenance).
 We will make sure the solution is secure by design without requiring extensive knowledge of software security practices.
 
