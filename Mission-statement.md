@@ -3,7 +3,7 @@ WIP that can be finetuned at the next meeting. The Mailu project strayed away fr
 We have some goals on the front-page, but this is not specific enough yet. https://mailu.io/1.9/general.html
 
 # Vision
-Our vision is to enable every person to run its own mail server.
+Our vision is to enable person to run its own mail server.
 
 # Mission
 Our mission is to provide a hasslefree OSS solution for deploying a mail stack without extensive knowledge of email software.
@@ -11,6 +11,8 @@ Our mission is to provide a hasslefree OSS solution for deploying a mail stack w
 We will do this by providing a setup utility that will create the complete mail stack configuration only requiring some general questions as input. 
 We aim to reduce the cost of ownership (required maintenance).
 We will make sure the solution is secure by design without requiring extensive knowledge of software security practices.
+
+However, the system administrator needs at least basic knowledge in regard to IP addresses, how to configure DNS records and how to configure reverse DNS (ptr) records.
 
 Mailu is an OSS project. Anyone can contribute to the project as long their contribution follows the core goals of Mailu. 
 
