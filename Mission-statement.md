@@ -3,7 +3,7 @@ WIP that can be finetuned at the next meeting. The Mailu project strayed away fr
 We have some goals on the front-page, but this is not specific enough yet. https://mailu.io/1.9/general.html
 
 # Vision
-Our vision is to enable person to run its own mail server.
+Our vision is to provide a software solution for running your own mail server.
 
 # Mission
 Our mission is to provide a hasslefree OSS solution for deploying a mail stack without extensive knowledge of email software.
