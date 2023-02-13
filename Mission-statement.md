@@ -21,7 +21,7 @@ In order to achieve our vision and mission, we have the following goals
 
 - Only use free software.
 - Provide a setup utility that guides the user in creating the Mailu software configuration.
-- Design Mailu to be insular. Mailu does require external software to function.
+- Design Mailu to be insular. Mailu does not require external software to function.
 - Keep the cost of ownership (required maintenance) low.
 - Ensure Mailu is secure by design. 
 - Provide an intuitive interface for configuring the Mailu software
