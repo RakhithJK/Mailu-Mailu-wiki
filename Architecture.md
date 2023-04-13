@@ -420,3 +420,43 @@ Docker Image Name: admin
 * Picture that shows how all services are linked to each other
   * also describe what kind of communication we have between all services.
   * We can create this as soon the service descriptions are done.
+
+# Firewalling
+
+* redis
+  inbound:
+    - TCP port 6379 from antispam, admin
+
+  outbound:
+    - none
+
+* front
+  inbound:
+    - TCP 80
+    - TCP 443
+    - TCP 25
+    - TCP 587
+    - TCP 465
+    - TCP 110
+    - TCP 995
+    - TCP 143
+    - TCP 993
+    - TCP 8000 from localhost
+    - TCP 8008 from localhost
+    - TCP 10204 from localhost
+    - TCP 14190 from webmail
+    - TCP 10025 from webmail
+    - TCP 10143 from webmail
+
+  outbound:
+    - TCP 8000 to localhost
+    - TCP 8008 to localhost
+    - TCP 10204 to localhost
+    - TCP 4190 to imap
+    - TCP 80 to admin + webmail
+    - TCP 11334 to antispam
+    - TCP 5232 to webdav
+    - TCP 143 to imap
+    - TCP 110 to imap
+    - TCP 10025 to smtp
+    - TCP 25 to smtp
